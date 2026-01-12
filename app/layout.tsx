@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: '/gallery/profile.jpeg', // served from public/gallery
+        url: '/gallery/cover.png', // served from public/gallery
         width: 1200,
         height: 630,
       },
