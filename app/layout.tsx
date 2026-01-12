@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: 'public/gallery/profile.jpeg', // Ensure this matches your filename
+        url: '/gallery/profile.jpeg', // served from public/gallery
         width: 1200,
         height: 630,
       },
