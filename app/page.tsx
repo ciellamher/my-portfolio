@@ -74,7 +74,7 @@ export default function Home() {
          </div>
          
          <p className="text-lg text-neutral-600 leading-relaxed max-w-md">
-            BS Computer Science Student | Notion Campus Leader at Holy Angel University | Events Lead at GDGoC-HAU | Events Director at CSIA 
+            BS in Computer Science Student | Notion Campus Leader at Holy Angel University | Events Lead at GDGoC-HAU | Events Director at CSIA 
          </p>
 
          <div className="flex flex-wrap gap-3 pt-4">
@@ -130,7 +130,7 @@ export default function Home() {
       </motion.div>
 
       {/* --- GRID LAYOUT --- */}
-      <div className="max-w-6xl mx-auto px-6 space-y-6">
+      <div className="max-w-6xl mx-auto px-6 mt-6 md:mt-12 space-y-10">
 
             {/* ROW 1: About, Tech, Experience */}
          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5 }} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
