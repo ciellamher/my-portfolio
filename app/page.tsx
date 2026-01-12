@@ -56,7 +56,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#FDFDFD] text-neutral-900 font-sans selection:bg-neutral-100 pb-12 overflow-x-hidden">
       
       {/* --- HERO SECTION --- */}
-      <div className="max-w-7xl mx-auto px-6 min-h-[90vh] grid grid-cols-1 md:grid-cols-12 gap-4 items-center overflow-hidden">
+      <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="max-w-7xl mx-auto px-6 min-h-[70vh] md:min-h-[90vh] grid grid-cols-1 md:grid-cols-12 gap-4 items-center overflow-hidden">
       
       {/* Left Spacer - This pushes the content to the right */}
       <div className="hidden md:block md:col-span-1" />
@@ -124,19 +124,19 @@ export default function Home() {
       </div>
 
       {/* Right: THE 3D LANYARD - Takes up 6 columns */}
-      <div className="flex justify-center order-1 md:order-2 md:col-span-6 h-[600px] md:h-[800px] relative z-0 mt-[-100px] md:mt-[-200px] pointer-events-none">
+      <div className="hidden md:flex justify-center order-1 md:order-2 md:col-span-6 md:h-[800px] relative z-0 md:mt-[-200px] pointer-events-none">
          <Lanyard />
       </div>
-      </div>
+      </motion.div>
 
       {/* --- GRID LAYOUT --- */}
       <div className="max-w-6xl mx-auto px-6 space-y-6">
 
-        {/* ROW 1: About, Tech, Experience */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* ROW 1: About, Tech, Experience */}
+         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5 }} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           <div className="lg:col-span-2 space-y-6">
-            <section className="bg-white p-8 rounded-3xl border border-neutral-200">
+            <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
               <h3 className="text-xl font-bold flex items-center gap-2 mb-6 text-neutral-900">
                 <Briefcase size={22} className="text-neutral-900" /> About
               </h3>
@@ -153,7 +153,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="bg-white p-8 rounded-3xl border border-neutral-200">
+            <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
                <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
                   <FlaskConical size={22} className="text-neutral-900"/> Tech Stack & Skills
@@ -201,7 +201,7 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-1">
-             <section className="bg-white p-8 rounded-3xl border border-neutral-200">
+             <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
                <div className="flex items-center gap-2 mb-10">
                   <Briefcase size={22} className="text-neutral-900" />
                   <h3 className="text-xl font-bold text-neutral-900">Experience</h3>
@@ -250,12 +250,12 @@ export default function Home() {
                </div>
                </section>
           </div>
-        </div>
+      </motion.div>
 
-        {/* --- ROW 2: BEYOND CODING & PROJECTS --- */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* --- ROW 2: BEYOND CODING & PROJECTS --- */}
+         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: 0.05 }} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-1">
-               <section className="bg-white p-8 rounded-3xl border border-neutral-200 h-full flex flex-col justify-between">
+               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full flex flex-col justify-between">
                   <div>
                      <h3 className="text-xl font-bold flex items-center gap-2 mb-4 text-neutral-900">
                         <Heart size={22} className="text-neutral-900"/> Beyond Coding
@@ -285,7 +285,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-2">
-               <section className="bg-white p-8 rounded-3xl border border-neutral-200 h-full">
+               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full">
                   <div className="flex justify-between items-center mb-6">
                      <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
                         <Code size={22} className="text-neutral-900"/> Recent Projects
@@ -350,12 +350,12 @@ export default function Home() {
                   </div>
                   </section>
             </div>
-        </div>
+      </motion.div>
 
       {/* --- ROW 3: CERTIFICATIONS & RECOMMENDATIONS --- */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+      <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.08 }} className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
          <div className="lg:col-span-1">
-               <section className="bg-white p-8 rounded-3xl border border-neutral-200 h-full">
+               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full">
                <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
                      <Award size={22} className="text-neutral-900"/> Certifications
@@ -403,8 +403,8 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-1">
-               <section className="bg-white p-8 rounded-3xl border border-neutral-200 h-full flex flex-col relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-6 md:p-8 opacity-5 pointer-events-none">
                      <MessageSquare size={120} />
                   </div>
                   <h3 className="text-xl font-bold flex items-center gap-2 mb-6 text-neutral-900">
@@ -446,11 +446,11 @@ export default function Home() {
                   </div>
                </section>
             </div>
-        </div>
+      </motion.div>
 
-        {/* --- ROW 4: MEMBERSHIPS, SOCIALS, CONTACT --- */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
+            {/* --- ROW 4: MEMBERSHIPS, SOCIALS, CONTACT --- */}
+         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: 0.12 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
                <h3 className="text-sm font-bold flex items-center gap-2 mb-6 text-neutral-900">
                   <Users size={18} className="text-neutral-400"/> A member of
                </h3>
@@ -476,7 +476,7 @@ export default function Home() {
                </div>
             </div>
 
-            <div className="bg-white p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
+            <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
                <h3 className="text-sm font-bold flex items-center gap-2 mb-6 text-neutral-900">
                   <Globe size={18} className="text-neutral-400"/> Social Links
                </h3>
@@ -554,10 +554,10 @@ export default function Home() {
                   <ChevronRight size={16} className="text-neutral-400"/>
                </a>
             </div>
-        </div>
+      </motion.div>
 
-        {/* ROW 5: GALLERY */}
-      <section className="bg-white p-8 rounded-3xl border border-neutral-200">
+            {/* ROW 5: GALLERY */}
+         <motion.section initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.16 }} className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
            <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
                  <Instagram size={22} className="text-neutral-900"/> Gallery
@@ -590,7 +590,7 @@ export default function Home() {
                  </div>
               ))}
            </div>
-        </section>
+      </motion.section>
 
         {/* ROW 6: GET IN TOUCH */}
         <section className="text-center max-w-2xl mx-auto py-12 md:py-24">
