@@ -123,8 +123,8 @@ export default function Home() {
          </div>
       </div>
 
-      {/* Right: THE 3D LANYARD - Takes up 6 columns */}
-      <div className="hidden md:flex justify-center order-1 md:order-2 md:col-span-6 md:h-[800px] relative z-0 md:mt-[-200px] pointer-events-none">
+      {/* Right: THE 3D LANYARD - Shows on mobile with reduced height */}
+      <div className="flex justify-center order-1 md:order-2 md:col-span-6 h-[220px] sm:h-[320px] md:h-[800px] relative z-0 mt-6 md:mt-[-200px] pointer-events-none">
          <Lanyard />
       </div>
       </motion.div>
