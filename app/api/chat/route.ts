@@ -7,12 +7,11 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { message } = body;
 
-    // 2. Initialize Gemini with your specific Key name "API"
-    // based on your Vercel screenshot
-    const apiKey = process.env.API; 
+    // 2. Initialize Gemini with API key from Vercel environment
+    const apiKey = process.env.GEMINI_API_KEY || process.env.API;
 
     if (!apiKey) {
-      return NextResponse.json({ reply: "Error: API Key is missing in Vercel settings." }, { status: 500 });
+      return NextResponse.json({ reply: "Error: API Key is missing in Vercel settings. Add GEMINI_API_KEY env var." }, { status: 500 });
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
