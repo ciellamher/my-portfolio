@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: 'Graciella Jimenez | Portfolio',
   description: 'Notion Campus Leader & BS Computer Science Student',
+  icons: {
+    icon: '/icon.png',
+  },
   openGraph: {
     images: [
       {
