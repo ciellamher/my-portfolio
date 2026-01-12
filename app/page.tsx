@@ -64,7 +64,7 @@ export default function Home() {
       {/* Name & Bio - Takes up 5 columns */}
       <div className="space-y-6 order-2 md:order-1 md:col-span-5 relative z-20">
          <div className="w-fit">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 flex items-center gap-3 whitespace-normal md:whitespace-nowrap">
+            <h1 id="hero" className="text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 flex items-center gap-3 whitespace-normal md:whitespace-nowrap">
             Graciella Jimenez 
             </h1>
             <div className="flex items-center gap-2 text-neutral-500 font-medium text-lg mt-2 pl-1">
