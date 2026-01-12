@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Send, Bot, X, MessageSquare } from "lucide-react";
+import { Send, Bot, X, MessageSquare, ArrowRight } from "lucide-react";
 
 // !!! MAKE SURE THIS LINE SAYS "export default" !!!
 export default function Chatbot() { 
@@ -48,46 +48,66 @@ export default function Chatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="w-80 h-96 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl flex flex-col overflow-hidden">
+        <div className="w-80 sm:w-96 h-[560px] bg-white border border-neutral-200 rounded-2xl shadow-xl flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-gray-800 p-3 flex justify-between items-center border-b border-gray-700">
-            <span className="font-semibold text-white flex items-center gap-2">
-              <Bot size={18} /> AI Assistant
-            </span>
-            <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
-              <X size={18} />
-            </button>
+          <div className="flex items-center gap-3 p-4 border-b border-neutral-100">
+            <img src="/me.jpeg" alt="Graciella" className="w-12 h-12 rounded-full object-cover" />
+            <div className="flex-1">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-lg font-bold text-neutral-900">Chat with Graciella</div>
+                  <div className="text-sm text-neutral-500 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-green-500" />
+                    <span>Online</span>
+                  </div>
+                </div>
+                <button onClick={() => setIsOpen(false)} className="text-neutral-400 hover:text-neutral-700 ml-4">
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3">
+          <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-white">
+            {messages.length === 0 && (
+              <div className="text-sm text-neutral-500 italic">Hi! Ask me about programming, web dev, or my projects.</div>
+            )}
             {messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`p-2 rounded-lg text-sm max-w-[80%] ${
-                  msg.role === "user"
-                    ? "bg-indigo-600 text-white ml-auto"
-                    : "bg-gray-700 text-gray-200"
-                }`}
-              >
-                {msg.text}
+              <div key={i} className={`max-w-[85%] ${msg.role === 'user' ? 'ml-auto text-white' : 'mr-auto text-neutral-900'}`}>
+                {msg.role === 'bot' ? (
+                  <div className="inline-block bg-neutral-100 text-neutral-900 p-3 rounded-2xl text-sm">
+                    {msg.text}
+                  </div>
+                ) : (
+                  <div className="inline-block bg-black text-white p-3 rounded-2xl text-sm">
+                    {msg.text}
+                  </div>
+                )}
               </div>
             ))}
-            {loading && <div className="text-xs text-gray-500">Thinking...</div>}
+            {loading && <div className="text-xs text-neutral-500">Thinking...</div>}
           </div>
 
-          {/* Input */}
-          <div className="p-3 bg-gray-800 border-t border-gray-700 flex gap-2">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-              placeholder="Ask about my projects..."
-              className="flex-1 bg-gray-700 text-white text-sm rounded px-3 py-2 outline-none focus:ring-1 focus:ring-indigo-500"
-            />
-            <button onClick={sendMessage} className="text-indigo-400 hover:text-indigo-300">
-              <Send size={20} />
-            </button>
+          {/* Input + footer */}
+          <div className="border-t border-neutral-100 bg-white p-4">
+            <div className="flex items-center gap-3">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                placeholder="Type a message..."
+                className="flex-1 bg-neutral-50 text-neutral-900 text-sm rounded-lg px-4 py-3 outline-none border border-neutral-100"
+                maxLength={1000}
+              />
+              <button onClick={sendMessage} className="w-10 h-10 bg-neutral-300 text-white rounded-md flex items-center justify-center hover:bg-neutral-400">
+                <ArrowRight size={18} />
+              </button>
+            </div>
+            <div className="flex items-center justify-between text-xs text-neutral-500 mt-3">
+              <div>Ask me about programming, web dev, or tech!</div>
+              <div>{input.length}/1000</div>
+            </div>
           </div>
         </div>
       )}
