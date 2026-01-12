@@ -123,3 +123,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Safe-area padding for devices with notches (apply to top-level main with id="top") */
+#top {
+  /* Fallback base padding, then use safe-area inset when available */
+  padding-top: 1.5rem;
+  padding-top: env(safe-area-inset-top, 1.5rem);
+  /* older iOS support */
+  padding-top: constant(safe-area-inset-top);
+}
