@@ -190,7 +190,7 @@ export default function Home() {
                      <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Creative Design</span>
                      <div className="flex flex-wrap gap-2">
                         {["Canva", "Figma", "Adobe Photoshop", "Adobe Premiere Pro", "UI/UX Design"].map(t => (
-                        <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg">
+                        <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
                            {t}
                         </span>
                         ))}
@@ -228,7 +228,7 @@ export default function Home() {
                         ${item.active ? 'bg-neutral-900' : 'bg-neutral-200'}`} 
                      />
                      
-                     <div className="flex justify-between items-start">
+                     <div className="flex justify-between items-start transition-transform group-hover:scale-105 cursor-default">
                         <div className="space-y-1">
                            <h4 className={`font-bold text-sm leading-tight transition-colors 
                            ${item.active ? 'text-neutral-900' : 'text-neutral-400'}`}>

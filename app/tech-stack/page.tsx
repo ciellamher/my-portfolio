@@ -34,7 +34,7 @@ export default function TechStackPage() {
                 {items.map((skill) => (
                   <span 
                     key={skill} 
-                    className="px-4 py-2 bg-white border border-neutral-200 text-sm font-medium text-neutral-800 rounded-xl hover:border-neutral-900 transition-all cursor-default"
+                    className="px-4 py-2 bg-white border border-neutral-200 text-sm font-medium text-neutral-800 rounded-xl hover:border-neutral-900 transition-colors cursor-default"
                   >
                     {skill}
                   </span>
