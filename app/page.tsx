@@ -56,7 +56,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#FDFDFD] text-neutral-900 font-sans selection:bg-neutral-100 pb-12 overflow-x-hidden">
       
       {/* --- HERO SECTION --- */}
-      <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="max-w-7xl mx-auto px-6 min-h-[70vh] md:min-h-[90vh] grid grid-cols-1 md:grid-cols-12 gap-4 items-center overflow-hidden">
+      <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[60vh] md:min-h-[90vh] grid grid-cols-1 md:grid-cols-12 gap-4 items-center overflow-hidden">
       
       {/* Left Spacer - This pushes the content to the right */}
       <div className="hidden md:block md:col-span-1" />
@@ -64,7 +64,7 @@ export default function Home() {
       {/* Name & Bio - Takes up 5 columns */}
       <div className="space-y-6 order-2 md:order-1 md:col-span-5 relative z-20">
          <div className="w-fit">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 flex items-center gap-3 whitespace-nowrap">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 flex items-center gap-3 whitespace-normal md:whitespace-nowrap">
             Graciella Jimenez 
             </h1>
             <div className="flex items-center gap-2 text-neutral-500 font-medium text-lg mt-2 pl-1">
