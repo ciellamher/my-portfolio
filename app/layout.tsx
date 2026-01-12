@@ -13,8 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'Graciella Jimenez | Portfolio', // This changes the tab name
-  description: 'BS Computer Science Student & Notion Campus Leader',
+  title: 'Graciella Jimenez | Portfolio',
+  description: 'Notion Campus Leader & BS Computer Science Student',
+  openGraph: {
+    images: [
+      {
+        url: 'public/gallery/profile.jpeg', // Ensure this matches your filename
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
