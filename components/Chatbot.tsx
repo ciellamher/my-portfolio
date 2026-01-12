@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Send, Bot, X } from "lucide-react";
+import { Send, Bot, X, MessageSquare } from "lucide-react";
 
 // !!! MAKE SURE THIS LINE SAYS "export default" !!!
 export default function Chatbot() { 
@@ -34,13 +34,15 @@ export default function Chatbot() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50 text-black">
-      {/* Toggle Button */}
+      {/* Toggle Button: black pill on closed state */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-indigo-600 text-white p-4 rounded-full shadow-lg hover:bg-indigo-700 transition-all"
+          aria-label="Open chat"
+          className="bg-black text-white px-5 py-3 rounded-full shadow-lg hover:bg-neutral-900 transition-all flex items-center gap-3"
         >
-          <Bot size={24} />
+          <MessageSquare size={18} />
+          <span className="font-medium">Chat with Graciella</span>
         </button>
       )}
 
