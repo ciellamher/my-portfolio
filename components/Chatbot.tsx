@@ -1,6 +1,6 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { Send, MessageSquare, X, ArrowRight } from "lucide-react";
+import { useState, useRef, useEffect, KeyboardEvent } from "react";
+import { MessageSquare, X, ArrowRight } from "lucide-react";
 
 export default function Chatbot() { 
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function Chatbot() {
   }, [messages]);
 
   const sendMessage = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
 
     const userMessage = input;
     setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
@@ -30,20 +30,32 @@ export default function Chatbot() {
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
       });
-      const data = await res.json();
+
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        const serverMessage = data?.reply || "The chat service is currently unavailable.";
+        throw new Error(serverMessage);
+      }
+
+      if (!data?.reply) {
+        throw new Error("The bot did not return a reply.");
+      }
+
       setMessages((prev) => [...prev, { role: "bot", text: data.reply }]);
     } catch (error) {
+      const fallback = error instanceof Error ? error.message : "Sorry, I encountered an error.";
       console.error(error);
-      setMessages((prev) => [...prev, { role: "bot", text: "Sorry, I encountered an error." }]);
+      setMessages((prev) => [...prev, { role: "bot", text: fallback }]);
     } finally {
       setLoading(false);
     }
   };
 
   // Handle Enter key to send
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       sendMessage();

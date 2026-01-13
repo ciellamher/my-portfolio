@@ -3,15 +3,17 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function POST(req: Request) {
   try {
-    // 1. Get the message from the frontend
-    const body = await req.json();
-    const { message } = body;
+    const body = await req.json().catch(() => null);
+    const message = typeof body?.message === "string" ? body.message.trim() : "";
 
-    // 2. Initialize Gemini with API key from Vercel environment
+    if (!message) {
+      return NextResponse.json({ reply: "Please provide a message." }, { status: 400 });
+    }
+
     const apiKey = process.env.GEMINI_API_KEY || process.env.API;
 
     if (!apiKey) {
-      return NextResponse.json({ reply: "Error: API Key is missing in Vercel settings. Add GEMINI_API_KEY env var." }, { status: 500 });
+      return NextResponse.json({ reply: "API key missing. Set GEMINI_API_KEY in your environment and redeploy." }, { status: 500 });
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
@@ -33,15 +35,18 @@ export async function POST(req: Request) {
       Reply as Graciella's assistant (keep it under 3 sentences):
     `;
 
-    // 4. Generate response
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
+
+    if (!text) {
+      return NextResponse.json({ reply: "The AI did not return a reply." }, { status: 502 });
+    }
 
     return NextResponse.json({ reply: text });
 
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ reply: "I'm having trouble connecting to Google right now. Please try again later!" }, { status: 500 });
+    return NextResponse.json({ reply: "I'm having trouble connecting to the AI service. Please check the API key and try again." }, { status: 500 });
   }
 }
