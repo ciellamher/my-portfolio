@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Lanyard from "../components/Lanyard"; 
-import Chatbot from "@/components/Chatbot";
 import { 
   MapPin, Calendar, Mail, ChevronRight, FlaskConical, Code, 
   BadgeCheck, Download, Github, Linkedin, Briefcase,
@@ -611,8 +610,6 @@ export default function Home() {
         </footer>
 
       </div>
-
-      <Chatbot />
     </main>
   );
 }
