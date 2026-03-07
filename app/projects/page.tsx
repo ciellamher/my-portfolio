@@ -12,7 +12,7 @@ const allProjects = [
   },
   { 
     name: "Driver Drowsiness Detector", 
-    date: "Mar 2026", 
+    date: "Feb 2026", 
     desc: "Real-time drowsiness detection system for drivers using deep learning and computer vision.", 
     tech: ["Python", "OpenCV", "Deep Learning"], 
     link: "https://github.com/ciellamher/driver_drowsiness_detector",

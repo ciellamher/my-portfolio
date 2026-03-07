@@ -300,6 +300,18 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      {[
                         { 
+                           name: "Smart Attendance System", 
+                           type: "Facial Recognition Attendance", 
+                           link: "https://github.com/ciellamher/Smart-Attendance-System", 
+                           date: "Mar 2026"
+                        },
+                        { 
+                           name: "Driver Drowsiness Detector", 
+                           type: "Computer Vision Safety System", 
+                           link: "https://github.com/ciellamher/driver_drowsiness_detector", 
+                           date: "Feb 2026" 
+                        },
+                        { 
                            name: "Lumo", 
                            type: "AI Navigation App", 
                            link: "https://github.com/darknecrocities/Lumo", 
@@ -311,18 +323,6 @@ export default function Home() {
                            type: "AI Medical Interpretation", 
                            link: "https://github.com/darknecrocities/peeview", 
                            date: "Aug 2025" 
-                        },
-                        { 
-                           name: "BahayKubo", 
-                           type: "Filipino Recipe Explorer", 
-                           link: "https://github.com/ciellamher/BahayKubo", 
-                           date: "Oct 2024" 
-                        },
-                        { 
-                           name: "Parapo", 
-                           type: "Public Transit Tracker", 
-                           link: "#", 
-                           date: "Dec 2023" 
                         }
                      ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                         .map((project, i) => (
