@@ -205,19 +205,19 @@ export default function Home() {
                      />
                      
                      <div className="flex justify-between items-start transition-transform group-hover:scale-105 cursor-default">
-                        <div className="space-y-1">
-                           <h4 className={`font-bold text-sm leading-tight transition-colors 
-                           ${item.active ? 'text-neutral-900' : 'text-neutral-400'}`}>
+                        <div className="space-y-1.5">
+                           <h4 className={`font-semibold text-[15px] leading-snug transition-colors 
+                           ${item.active ? 'text-neutral-900' : 'text-neutral-600'}`}>
                            {item.title}
                            </h4>
-                           <p className={`text-xs font-medium ${item.active ? 'text-neutral-500' : 'text-neutral-300'}`}>
+                           <p className={`text-sm font-medium leading-snug ${item.active ? 'text-neutral-600' : 'text-neutral-500'}`}>
                            {item.org}
                            </p>
                         </div>
                         
                         {/* Year Badge */}
-                        <span className={`text-[10px] font-bold border px-3 py-1 rounded-full whitespace-nowrap
-                           ${item.active ? 'text-neutral-500 bg-neutral-50 border-neutral-200' : 'text-neutral-300 bg-transparent border-neutral-100'}`}>
+                        <span className={`text-xs font-semibold border px-3 py-1 rounded-full whitespace-nowrap
+                           ${item.active ? 'text-neutral-600 bg-neutral-50 border-neutral-200' : 'text-neutral-400 bg-transparent border-neutral-200'}`}>
                            {item.year}
                         </span>
                      </div>
@@ -341,63 +341,73 @@ export default function Home() {
                   </Link>
                </div>
                
-               <div className="space-y-4">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {[
-                     { 
-                     name: "Data Analytics Essentials", 
-                     org: "Cisco", 
-                     date: "Nov 2025", 
-                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
-                     link: "https://www.credly.com/org/cisco/badge/data-analytics-essentials" 
+                     {
+                        name: "AI Fundamentals with IBM SkillsBuild",
+                        org: "Cisco",
+                        date: "Mar 2026",
+                        img: "https://images.credly.com/images/cbe961ef-3536-47a6-8f4e-21f3473e9ea6/blob.png",
+                        link: "#"
                      },
-                     { 
-                     name: "Notion Advanced Badge", 
-                     org: "Notion", 
-                     date: "Oct 2025", 
-                     img: "/badges/notion-advanced.png", 
-                     link: "https://verify.skilljar.com/c/sui8pnm3wf5a" 
+                     {
+                        name: "Artificial Intelligence Fundamentals",
+                        org: "IBM",
+                        date: "Mar 2026",
+                        img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+                        link: "#"
                      },
-                     { 
-                     name: "Notion Essentials Badge", 
-                     org: "Notion", 
-                     date: "Oct 2025", 
-                     img: "/badges/notion-essentials.png", 
-                     link: "https://verify.skilljar.com/c/22uigpmzsa2g" 
+                     {
+                        name: "Data Analytics Essentials",
+                        org: "Cisco",
+                        date: "Nov 2025",
+                        img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
+                        link: "https://www.credly.com/org/cisco/badge/data-analytics-essentials"
                      },
-                     { 
-                     name: "Notion Workflows Badge", 
-                     org: "Notion", 
-                     date: "Oct 2025", 
-                     img: "/badges/notion-workflows.png", 
-                     link: "https://verify.skilljar.com/c/vic4smi674nt" 
+                     {
+                        name: "Notion Advanced Badge",
+                        org: "Notion",
+                        date: "Oct 2025",
+                        img: "/badges/notion-advanced.png",
+                        link: "https://verify.skilljar.com/c/sui8pnm3wf5a"
                      },
-                     { 
-                     name: "Introduction to Networks", 
-                     org: "Cisco", 
-                     date: "Apr 2025", 
-                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/d37cd1b7-ce71-45ab-b33d-da7f8ce2a5e2.png",
-                     link: "https://www.credly.com/org/cisco/badge/ccna-introduction-to-networks"
+                     {
+                        name: "Notion Essentials Badge",
+                        org: "Notion",
+                        date: "Oct 2025",
+                        img: "/badges/notion-essentials.png",
+                        link: "https://verify.skilljar.com/c/22uigpmzsa2g"
                      },
-                     { 
-                     name: "Cyber Threat Management", 
-                     org: "Cisco", 
-                     date: "Aug 2025", 
-                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/cyber_threat_management_37.png",
-                     link: "https://www.credly.com/org/cisco/badge/cyber-threat-management"
-                     },
-                  ].map((cert, i) => (
-                     <div key={i} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl border border-neutral-100 group transition-all hover:bg-neutral-100">
-                     <img 
-                        src={cert.img} 
-                        alt={cert.name} 
-                        className="w-12 h-12 object-contain rounded-lg" 
-                     />
-                     <div>
-                        <h4 className="font-bold text-sm text-neutral-900">{cert.name}</h4>
-                        <p className="text-xs text-neutral-500 mt-0.5">{cert.org} • {cert.date}</p>
-                     </div>
-                     </div>
-                  ))}
+                     {
+                        name: "Notion Workflows Badge",
+                        org: "Notion",
+                        date: "Oct 2025",
+                        img: "/badges/notion-workflows.png",
+                        link: "https://verify.skilljar.com/c/vic4smi674nt"
+                     }
+                  ]
+                     .reduce((columns, cert, index) => {
+                        const columnIndex = index < 3 ? 0 : 1;
+                        columns[columnIndex].push(cert);
+                        return columns;
+                     }, [[], []] as Array<Array<{ name: string; org: string; date: string; img: string; link: string }>>)
+                     .map((column, columnIndex) => (
+                        <div key={columnIndex} className="space-y-4">
+                           {column.map((cert, certIndex) => (
+                              <div key={`${columnIndex}-${certIndex}`} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl border border-neutral-100 group transition-all hover:bg-neutral-100">
+                                 <img
+                                    src={cert.img}
+                                    alt={cert.name}
+                                    className="w-12 h-12 object-contain rounded-lg"
+                                 />
+                                 <div>
+                                    <h4 className="font-bold text-sm text-neutral-900">{cert.name}</h4>
+                                    <p className="text-xs text-neutral-500 mt-0.5">{cert.org} • {cert.date}</p>
+                                 </div>
+                              </div>
+                           ))}
+                        </div>
+                     ))}
                </div>
                </section>
             </div>

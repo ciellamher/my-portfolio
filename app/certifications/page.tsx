@@ -3,6 +3,22 @@ import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const allCerts = [
+  // --- 2026 CERTIFICATIONS ---
+  {
+    name: "AI Fundamentals with IBM SkillsBuild",
+    org: "Cisco",
+    date: "Mar 2026",
+    img: "https://images.credly.com/images/cbe961ef-3536-47a6-8f4e-21f3473e9ea6/blob.png",
+    link: "#"
+  },
+  {
+    name: "Artificial Intelligence Fundamentals",
+    org: "IBM",
+    date: "Mar 2026",
+    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+    link: "#"
+  },
+
   // --- 2025 CERTIFICATIONS ---
   { 
     name: "Data Analytics Essentials", 
