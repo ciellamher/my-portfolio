@@ -347,19 +347,43 @@ export default function Home() {
                      name: "Data Analytics Essentials", 
                      org: "Cisco", 
                      date: "Nov 2025", 
-                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png" 
+                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
+                     link: "https://www.credly.com/org/cisco/badge/data-analytics-essentials" 
                      },
                      { 
                      name: "Notion Advanced Badge", 
                      org: "Notion", 
                      date: "Oct 2025", 
-                     img: "/badges/notion-advanced.png" 
+                     img: "/badges/notion-advanced.png", 
+                     link: "https://verify.skilljar.com/c/sui8pnm3wf5a" 
                      },
                      { 
                      name: "Notion Essentials Badge", 
                      org: "Notion", 
                      date: "Oct 2025", 
-                     img: "/badges/notion-essentials.png" 
+                     img: "/badges/notion-essentials.png", 
+                     link: "https://verify.skilljar.com/c/22uigpmzsa2g" 
+                     },
+                     { 
+                     name: "Notion Workflows Badge", 
+                     org: "Notion", 
+                     date: "Oct 2025", 
+                     img: "/badges/notion-workflows.png", 
+                     link: "https://verify.skilljar.com/c/vic4smi674nt" 
+                     },
+                     { 
+                     name: "Introduction to Networks", 
+                     org: "Cisco", 
+                     date: "Apr 2025", 
+                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/d37cd1b7-ce71-45ab-b33d-da7f8ce2a5e2.png",
+                     link: "https://www.credly.com/org/cisco/badge/ccna-introduction-to-networks"
+                     },
+                     { 
+                     name: "Cyber Threat Management", 
+                     org: "Cisco", 
+                     date: "Aug 2025", 
+                     img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/cyber_threat_management_37.png",
+                     link: "https://www.credly.com/org/cisco/badge/cyber-threat-management"
                      },
                   ].map((cert, i) => (
                      <div key={i} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl border border-neutral-100 group transition-all hover:bg-neutral-100">
