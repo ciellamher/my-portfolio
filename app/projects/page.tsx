@@ -1,5 +1,5 @@
 "use client";
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, Github, Trophy } from 'lucide-react';
 
 const allProjects = [
@@ -62,12 +62,14 @@ const allProjects = [
 ];
 
 export default function ProjectsPage() {
+  const router = useRouter();
+
   return (
     <main className="min-h-screen bg-[#FDFDFD] text-neutral-900 py-20 px-6 font-sans">
       <div className="max-w-5xl mx-auto">
-        <Link href="/" className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 text-sm font-medium no-underline">
+        <button onClick={() => router.back()} className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 text-sm font-medium cursor-pointer bg-transparent border-0 p-0">
           <ArrowLeft size={16} /> Back to Home
-        </Link>
+        </button>
         
         <h1 className="text-4xl font-bold mb-12 tracking-tight">All Projects</h1>
 

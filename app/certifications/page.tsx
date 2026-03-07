@@ -1,5 +1,5 @@
 "use client";
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const allCerts = [
@@ -123,12 +123,14 @@ const allCerts = [
 ];
 
 export default function CertificationsPage() {
+  const router = useRouter();
+
   return (
     <main className="min-h-screen bg-[#FDFDFD] text-neutral-900 py-20 px-6 font-sans">
       <div className="max-w-6xl mx-auto">
-        <Link href="/" className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 text-sm font-medium no-underline">
+        <button onClick={() => router.back()} className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 text-sm font-medium cursor-pointer bg-transparent border-0 p-0">
           <ArrowLeft size={16} /> Back to Home
-        </Link>
+        </button>
         <h1 className="text-4xl font-bold mb-12 tracking-tight">Licenses & Certifications</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {allCerts.map((cert, i) => (
