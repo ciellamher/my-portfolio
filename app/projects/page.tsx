@@ -4,6 +4,20 @@ import { ArrowLeft, Github, Trophy } from 'lucide-react';
 
 const allProjects = [
   { 
+    name: "Smart Attendance System", 
+    date: "Mar 2026", 
+    desc: "Automated attendance tracking system using facial recognition and computer vision technology.", 
+    tech: ["Python", "OpenCV", "Face Recognition"], 
+    link: "https://github.com/ciellamher/Smart-Attendance-System",
+  },
+  { 
+    name: "Driver Drowsiness Detector", 
+    date: "Mar 2026", 
+    desc: "Real-time drowsiness detection system for drivers using deep learning and computer vision.", 
+    tech: ["Python", "OpenCV", "Deep Learning"], 
+    link: "https://github.com/ciellamher/driver_drowsiness_detector",
+  },
+  { 
     name: "Lumo", 
     date: "Oct 2025", 
     desc: "AI-powered voice-guided navigation app for the visually impaired. Winner of the SkyDev Hackathon.", 
