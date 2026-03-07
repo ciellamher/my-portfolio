@@ -204,19 +204,19 @@ export default function Home() {
                         ${item.active ? 'bg-neutral-900' : 'bg-neutral-200'}`} 
                      />
                      
-                     <div className="flex justify-between items-start transition-transform group-hover:scale-105 cursor-default">
-                        <div className="space-y-1.5">
-                           <h4 className={`font-semibold text-[15px] leading-snug transition-colors 
+                     <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-start cursor-default">
+                        <div className="space-y-1 min-w-0">
+                           <h4 className={`font-semibold text-sm leading-snug transition-colors 
                            ${item.active ? 'text-neutral-900' : 'text-neutral-600'}`}>
                            {item.title}
                            </h4>
-                           <p className={`text-sm font-medium leading-snug ${item.active ? 'text-neutral-600' : 'text-neutral-500'}`}>
+                           <p className={`text-xs font-medium leading-snug ${item.active ? 'text-neutral-600' : 'text-neutral-500'}`}>
                            {item.org}
                            </p>
                         </div>
                         
                         {/* Year Badge */}
-                        <span className={`text-xs font-semibold border px-3 py-1 rounded-full whitespace-nowrap
+                        <span className={`text-[10px] font-semibold border px-3 py-1 rounded-full whitespace-nowrap
                            ${item.active ? 'text-neutral-600 bg-neutral-50 border-neutral-200' : 'text-neutral-400 bg-transparent border-neutral-200'}`}>
                            {item.year}
                         </span>
