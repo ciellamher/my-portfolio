@@ -7,12 +7,41 @@ import { ArrowLeft } from 'lucide-react';
 
 // Organized data structure for your skills
 const allSkills = {
-  Frontend: ["JavaScript", "TypeScript", "React", "Next.js", "Vue.js", "Tailwind CSS", "SCSS", "Styled Components", "Vite", "Webpack", "ESLint", "Prettier"],
-  Backend: ["Node.js", "Python", "Java", "PHP", "Express.js", "NestJS", "FastAPI", "Spring Boot", "Laravel", "PostgreSQL", "MySQL", "MongoDB"],
-  "DevOps & Cloud": ["AWS", "GCP", "Azure", "GitHub Actions", "Jenkins", "GitLab CI", "Terraform", "Docker", "Kubernetes"],
-  "AI & Machine Learning": ["TensorFlow", "PyTorch", "LangChain", "Transformers", "OpenAI", "Anthropic", "Hugging Face"],
-  "VA & Productivity": ["Notion (Campus Leader)", "Microsoft Excel", "Microsoft Word", "Google Workspace", "Project Management", "Data Entry", "Social Media Management"],
-  "Creative Design": ["Canva", "Figma", "Adobe Photoshop", "Adobe Illustrator", "Adobe After Effects", "Adobe Premiere Pro", "UI/UX Design"]
+  Frontend: [
+    "JavaScript", "TypeScript", "React", "Next.js", "Vue.js", 
+    "HTML5", "Tailwind CSS", "SCSS", "Styled Components", "Vite", 
+    "Webpack", "ESLint", "Prettier"
+  ],
+  Backend: [
+    "Node.js", "Python", "Java", "C++", "Ruby", "PHP", 
+    "Express.js", "NestJS", "FastAPI", "Spring Boot", "Laravel", 
+    "PostgreSQL", "MySQL", "MongoDB"
+  ],
+  "Mobile Development": [
+    "Flutter", "Mobile App Development"
+  ],
+  "DevOps & Cloud": [
+    "Linux", "Operating Systems (Memory Management)", "AWS", "GCP", 
+    "Azure", "GitHub Actions", "Jenkins", "GitLab CI", "Terraform", 
+    "Docker", "Kubernetes"
+  ],
+  "AI & Machine Learning": [
+    "OpenCV", "Convolutional Neural Networks (CNNs)", "Edge/Offline AI", 
+    "TensorFlow", "PyTorch", "LangChain", "Transformers", "OpenAI", 
+    "Anthropic", "Hugging Face"
+  ],
+  "VA & Productivity": [
+    "Notion (Campus Leader)", "Microsoft Excel", "Microsoft Word", 
+    "Google Workspace", "Project Management", "Data Entry", 
+    "Social Media Management"
+  ],
+  "Creative Design": [
+    "Canva", "Figma", "Adobe Photoshop", "Adobe Illustrator", 
+    "Adobe After Effects", "Adobe Premiere Pro", "UI/UX Design", "Wix"
+  ],
+  "Development Tools": [
+    "VS Code"
+  ]
 };
 
 export default function TechStackPage() {

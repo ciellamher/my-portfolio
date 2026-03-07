@@ -163,10 +163,11 @@ export default function Home() {
                </div>
                
                <div className="space-y-6">
+                  {/* Frontend */}
                   <div>
-                     <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Development</span>
+                     <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Frontend</span>
                      <div className="flex flex-wrap gap-2">
-                        {["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Python", "Node.js", "PostgreSQL", "NLP", "C++"].map(t => (
+                        {["JavaScript", "TypeScript", "React", "Next.js", "Vue.js", "HTML5", "Tailwind CSS", "SCSS", "Styled Components", "Vite", "Webpack", "ESLint", "Prettier"].map(t => (
                         <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
                            {t}
                         </span>
@@ -174,21 +175,23 @@ export default function Home() {
                      </div>
                   </div>
 
+                  {/* Backend */}
                   <div>
-               <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Productivity & VA</span>
-               <div className="flex flex-wrap gap-2">
-                  {["Notion", "Microsoft Excel", "Microsoft Word", "Google Workspace", "Project Management", "Data Entry"].map(t => (
-                  <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
-                     {t}
-                  </span>
-                  ))}
-               </div>
-            </div>
-
-                  <div>
-                     <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Creative Design</span>
+                     <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Backend</span>
                      <div className="flex flex-wrap gap-2">
-                        {["Canva", "Figma", "Adobe Photoshop", "Adobe Premiere Pro", "UI/UX Design"].map(t => (
+                        {["Node.js", "Python", "Java", "C++", "Ruby", "PHP", "Express.js", "NestJS", "FastAPI", "Spring Boot", "Laravel", "PostgreSQL", "MySQL", "MongoDB"].map(t => (
+                        <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
+                           {t}
+                        </span>
+                        ))}
+                     </div>
+                  </div>
+
+                  {/* VA & Productivity */}
+                  <div>
+                     <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">VA & Productivity</span>
+                     <div className="flex flex-wrap gap-2">
+                        {["Notion (Campus Leader)", "Microsoft Excel", "Microsoft Word", "Google Workspace", "Project Management", "Data Entry", "Social Media Management"].map(t => (
                         <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
                            {t}
                         </span>
