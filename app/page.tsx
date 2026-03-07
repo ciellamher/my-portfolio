@@ -347,15 +347,15 @@ export default function Home() {
                         name: "AI Fundamentals with IBM SkillsBuild",
                         org: "Cisco",
                         date: "Mar 2026",
-                        img: "https://images.credly.com/images/cbe961ef-3536-47a6-8f4e-21f3473e9ea6/blob.png",
-                        link: "#"
+                        img: "https://media.licdn.com/dms/image/v2/D560BAQFYnR_Zrm87Dg/company-logo_100_100/B56ZnMyVr4HUAQ-/0/1760077372453/cisco_logo?e=1774483200&v=beta&t=U7eRwBv0pEVhLVDRAtMnnpRbNygJcs0XQ2Mi0UmOX8k",
+                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2F87bc6e66-1050-41e2-9ed1-d99728e38d5f%2Flinked_in_profile&urlhash=oW4o&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
                      },
                      {
                         name: "Artificial Intelligence Fundamentals",
                         org: "IBM",
                         date: "Mar 2026",
                         img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-                        link: "#"
+                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fdf867832-36b5-445b-a500-e1ace044337f%2Flinked_in_profile&urlhash=xpKd&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
                      },
                      {
                         name: "Data Analytics Essentials",
