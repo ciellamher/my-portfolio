@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Lanyard from "../components/Lanyard"; 
 import { 
@@ -13,33 +13,7 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const galleryRef = useRef<HTMLDivElement>(null);
-
-  const recommendations = [
-    {
-      quote: "Graciella has a unique eye for design and a strong technical foundation. Her ability to organize complex events like the Notion Campus gathering while maintaining high academic standards is impressive.",
-      name: "Jane Doe",
-      title: "Professor, Holy Angel University"
-    },
-    {
-      quote: "Working with Graciella on the Furnivo project was fantastic. Her UI/UX critiques were insightful and directly improved the user experience. She balances aesthetics and functionality perfectly.",
-      name: "John Smith",
-      title: "Lead Designer, Furnivo"
-    },
-    {
-      quote: "One of the most dedicated students I've mentored. Her passion for combining AI with practical web solutions is evident in every project she tackles. A future leader in tech.",
-      name: "Dr. Alan Turing",
-      title: "Mentor & AI Researcher"
-    }
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % recommendations.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [recommendations.length]);
 
   const scrollGallery = (direction: 'left' | 'right') => {
     if (galleryRef.current) {
@@ -354,9 +328,9 @@ export default function Home() {
             </div>
       </motion.div>
 
-      {/* --- ROW 3: CERTIFICATIONS & RECOMMENDATIONS --- */}
-      <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.08 }} className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-         <div className="lg:col-span-1">
+      {/* --- ROW 3: CERTIFICATIONS --- */}
+      <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.08 }} className="grid grid-cols-1 gap-6">
+         <div>
                <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full">
                <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
@@ -401,51 +375,6 @@ export default function Home() {
                      </div>
                   ))}
                </div>
-               </section>
-            </div>
-
-            <div className="lg:col-span-1">
-               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full flex flex-col relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-6 md:p-8 opacity-5 pointer-events-none">
-                     <MessageSquare size={120} />
-                  </div>
-                  <h3 className="text-xl font-bold flex items-center gap-2 mb-6 text-neutral-900">
-                     <Users size={22} className="text-neutral-900"/> Recommendations
-                  </h3>
-                  
-                  <div className="flex-1 flex flex-col justify-center relative min-h-[180px]">
-                    <AnimatePresence mode='wait'>
-                        <motion.div
-                          key={currentSlide}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.4, ease: "easeInOut" }}
-                          className="max-w-xl"
-                        >
-                          <p className="text-lg font-medium text-neutral-700 italic leading-relaxed mb-6">
-                              "{recommendations[currentSlide].quote}"
-                          </p>
-                          <div>
-                              <h4 className="font-bold text-neutral-900">{recommendations[currentSlide].name}</h4>
-                              <p className="text-xs text-neutral-500">{recommendations[currentSlide].title}</p>
-                          </div>
-                        </motion.div>
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="flex gap-2 mt-6 justify-start">
-                    {recommendations.map((_, index) => (
-                      <button 
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          index === currentSlide ? "w-6 bg-neutral-900" : "w-2 bg-neutral-200 hover:bg-neutral-400"
-                        }`}
-                        aria-label={`Go to slide ${index + 1}`}
-                      />
-                    ))}
-                  </div>
                </section>
             </div>
       </motion.div>
