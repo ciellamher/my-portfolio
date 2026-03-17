@@ -384,13 +384,6 @@ export default function Home() {
                         date: "Oct 2025",
                         img: "/badges/notion-essentials.png",
                         link: "https://verify.skilljar.com/c/22uigpmzsa2g"
-                     },
-                     {
-                        name: "Notion Workflows Badge",
-                        org: "Notion",
-                        date: "Oct 2025",
-                        img: "/badges/notion-workflows.png",
-                        link: "https://verify.skilljar.com/c/vic4smi674nt"
                      }
                   ]
                      .reduce((columns, cert, index, certs) => {
