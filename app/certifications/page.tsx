@@ -5,6 +5,13 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 const allCerts = [
   // --- 2026 CERTIFICATIONS ---
   {
+    name: "AWS Academy Graduate - Cloud Foundations",
+    org: "AWS Academy",
+    date: "Mar 2026",
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    link: "https://www.credly.com/badges/fb9b3687-654c-4947-ba77-8721586bc54a/linked_in_profile"
+  },
+  {
     name: "AI Fundamentals with IBM SkillsBuild",
     org: "Cisco",
     date: "Mar 2026",

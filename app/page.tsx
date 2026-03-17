@@ -344,6 +344,13 @@ export default function Home() {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {[
                      {
+                        name: "AWS Academy Graduate - Cloud Foundations",
+                        org: "AWS Academy",
+                        date: "Mar 2026",
+                        img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+                        link: "https://www.credly.com/badges/fb9b3687-654c-4947-ba77-8721586bc54a/linked_in_profile"
+                     },
+                     {
                         name: "AI Fundamentals with IBM SkillsBuild",
                         org: "Cisco",
                         date: "Mar 2026",
@@ -386,8 +393,9 @@ export default function Home() {
                         link: "https://verify.skilljar.com/c/vic4smi674nt"
                      }
                   ]
-                     .reduce((columns, cert, index) => {
-                        const columnIndex = index < 3 ? 0 : 1;
+                     .reduce((columns, cert, index, certs) => {
+                        const midpoint = Math.ceil(certs.length / 2);
+                        const columnIndex = index < midpoint ? 0 : 1;
                         columns[columnIndex].push(cert);
                         return columns;
                      }, [[], []] as Array<Array<{ name: string; org: string; date: string; img: string; link: string }>>)
