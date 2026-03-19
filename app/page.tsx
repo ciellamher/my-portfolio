@@ -344,6 +344,13 @@ export default function Home() {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {[
                      {
+                        name: "Data Analytics Essentials",
+                        org: "Cisco",
+                        date: "Mar 2026",
+                        img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
+                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fe1d2bec0-ccfb-4818-ac1f-0d3d62d12d0f%2Flinked_in_profile&urlhash=CMl-&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BamwwyYFMR%2BS2jRO1NDPN2w%3D%3D"
+                     },
+                     {
                         name: "AWS Academy Graduate - Cloud Foundations",
                         org: "AWS Academy",
                         date: "Mar 2026",
@@ -363,13 +370,6 @@ export default function Home() {
                         date: "Mar 2026",
                         img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
                         link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fdf867832-36b5-445b-a500-e1ace044337f%2Flinked_in_profile&urlhash=xpKd&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
-                     },
-                     {
-                        name: "Data Analytics Essentials",
-                        org: "Cisco",
-                        date: "Nov 2025",
-                        img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
-                        link: "https://www.credly.com/org/cisco/badge/data-analytics-essentials"
                      },
                      {
                         name: "Notion Advanced Badge",

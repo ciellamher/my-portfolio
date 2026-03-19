@@ -4,6 +4,13 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const allCerts = [
   // --- 2026 CERTIFICATIONS ---
+  { 
+    name: "Data Analytics Essentials", 
+    org: "Cisco", 
+    date: "Mar 2026", 
+    img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
+    link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fe1d2bec0-ccfb-4818-ac1f-0d3d62d12d0f%2Flinked_in_profile&urlhash=CMl-&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BamwwyYFMR%2BS2jRO1NDPN2w%3D%3D" 
+  },
   {
     name: "AWS Academy Graduate - Cloud Foundations",
     org: "AWS Academy",
@@ -27,13 +34,6 @@ const allCerts = [
   },
 
   // --- 2025 CERTIFICATIONS ---
-  { 
-    name: "Data Analytics Essentials", 
-    org: "Cisco", 
-    date: "Nov 2025", 
-    img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
-    link: "https://www.credly.com/org/cisco/badge/data-analytics-essentials" 
-  },
   { 
     name: "Notion Advanced Badge", 
     org: "Notion", 
