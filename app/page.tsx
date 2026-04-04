@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Lanyard from "../components/Lanyard"; 
-import { recentProjects } from "@/lib/projects";
+import { recentProjects } from "../lib/projects";
 import { 
   MapPin, Calendar, Mail, ChevronRight, FlaskConical, Code, 
    Download, Github, Linkedin, Briefcase,

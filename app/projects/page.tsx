@@ -1,10 +1,11 @@
 "use client";
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Github } from 'lucide-react';
-import { allProjects } from "@/lib/projects";
+import { allProjects } from "../../lib/projects";
 
 export default function ProjectsPage() {
   const router = useRouter();
+  const finishedProjects = allProjects.filter((project) => project.status === "Finished");
 
   return (
     <main className="min-h-screen bg-[#FDFDFD] text-neutral-900 py-20 px-6 font-sans">
@@ -16,7 +17,7 @@ export default function ProjectsPage() {
         <h1 className="text-4xl font-bold mb-12 tracking-tight">All Projects</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {allProjects.map((project, i) => (
+          {finishedProjects.map((project, i) => (
             <div key={i} className="bg-white p-8 rounded-3xl border border-neutral-200 flex flex-col group hover:border-neutral-900 transition-all h-full">
               <div className="flex flex-1 flex-col">
                 <div className="flex justify-between items-start mb-4">
@@ -51,7 +52,7 @@ export default function ProjectsPage() {
               </div>
 
               <div className="flex flex-wrap gap-2 mt-6">
-                {project.tech.map(t => (
+                {project.tech.map((t) => (
                   <span key={t} className="px-3 py-1 bg-neutral-50 border border-neutral-100 text-[10px] font-bold text-neutral-500 rounded-lg">{t}</span>
                 ))}
               </div>
