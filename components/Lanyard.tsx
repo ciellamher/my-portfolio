@@ -108,7 +108,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
             )}
           >
             <mesh geometry={nodes.card.geometry}>
-               <meshPhysicalMaterial map={materials.base.map} roughness={1} metalness={0} />
+              <meshPhysicalMaterial map={materials.base.map} roughness={1} metalness={0} />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />

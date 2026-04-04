@@ -1,19 +1,34 @@
 "use client";
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Lanyard from "../components/Lanyard"; 
+import { recentProjects } from "@/lib/projects";
 import { 
   MapPin, Calendar, Mail, ChevronRight, FlaskConical, Code, 
-  BadgeCheck, Download, Github, Linkedin, Briefcase,
+   Download, Github, Linkedin, Briefcase,
   Globe, Heart, Award, Users, MessageSquare, ArrowUpRight,
-  Instagram, ArrowLeft, ArrowRight, Mic, 
-  Trophy // <--- ADD THIS LINE TO FIX THE CRASH
+   Instagram, ArrowLeft, ArrowRight, Mic
 } from "lucide-react";
 
 export default function Home() {
   const galleryRef = useRef<HTMLDivElement>(null);
+   const galleryFiles = [
+      "IMG_0780.JPG",
+      "IMG_4954.JPG",
+      "profile.jpeg",
+      "IMG_4955.JPG",
+      "IMG_5366.JPG"
+   ];
+
+   const getProjectPreview = (description: string) => {
+      if (description.length <= 110) {
+         return description;
+      }
+
+      return `${description.slice(0, 110).trimEnd()}...`;
+   };
 
   const scrollGallery = (direction: 'left' | 'right') => {
     if (galleryRef.current) {
@@ -24,6 +39,72 @@ export default function Home() {
       });
     }
   };
+
+   useEffect(() => {
+      const gallery = galleryRef.current;
+
+      if (!gallery) {
+         return;
+      }
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+      if (prefersReducedMotion || !finePointer) {
+         return;
+      }
+
+      let animationFrameId = 0;
+      let lastTimestamp = 0;
+      let isPaused = false;
+
+      const pause = () => {
+         isPaused = true;
+      };
+
+      const resume = () => {
+         isPaused = false;
+         lastTimestamp = 0;
+      };
+
+      const animate = (timestamp: number) => {
+         if (!lastTimestamp) {
+            lastTimestamp = timestamp;
+         }
+
+         if (!isPaused) {
+            const elapsed = timestamp - lastTimestamp;
+
+            if (elapsed >= 16) {
+               gallery.scrollLeft += 0.22;
+
+               const halfWidth = gallery.scrollWidth / 2;
+               if (halfWidth > 0 && gallery.scrollLeft >= halfWidth) {
+                  gallery.scrollLeft -= halfWidth;
+               }
+
+               lastTimestamp = timestamp;
+            }
+         }
+
+         animationFrameId = window.requestAnimationFrame(animate);
+      };
+
+      gallery.addEventListener("mouseenter", pause);
+      gallery.addEventListener("mouseleave", resume);
+      gallery.addEventListener("focusin", pause);
+      gallery.addEventListener("focusout", resume);
+
+      animationFrameId = window.requestAnimationFrame(animate);
+
+      return () => {
+         window.cancelAnimationFrame(animationFrameId);
+         gallery.removeEventListener("mouseenter", pause);
+         gallery.removeEventListener("mouseleave", resume);
+         gallery.removeEventListener("focusin", pause);
+         gallery.removeEventListener("focusout", resume);
+      };
+   }, []);
 
   return (
    <main id="top" className="pt-8 sm:pt-10 md:pt-0 min-h-screen bg-[#FDFDFD] text-neutral-900 font-sans selection:bg-neutral-100 pb-12 overflow-x-hidden">
@@ -51,47 +132,44 @@ export default function Home() {
          </p>
 
          <div className="flex flex-wrap gap-3 pt-4">
-            {/* 1. Schedule a Call Link */}
-            <a 
-            href="https://calendar.app.google/EVMe3RzST39L25MH9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-xl hover:bg-black transition-transform duration-300 font-semibold text-sm shadow-lg hover:scale-105 no-underline cursor-pointer"
+            <a
+               href="https://calendar.app.google/EVMe3RzST39L25MH9"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-xl hover:bg-black transition-transform duration-300 font-semibold text-sm shadow-lg hover:scale-105 no-underline cursor-pointer"
             >
-            <Calendar size={18} /> Schedule a Call
+               <Calendar size={18} /> Schedule a Call
             </a>
 
-            {/* 2. CV Download */}
-            <a 
-            href="/Graciella_Jimenez_CV.pdf"
-            download
-            className="flex items-center gap-2 px-5 py-3 bg-white border border-neutral-200 text-neutral-900 rounded-xl hover:bg-neutral-100 transition-all duration-300 font-semibold text-sm hover:scale-105 no-underline cursor-pointer"
+            <a
+               href="/Graciella_Jimenez_CV.pdf"
+               download
+               className="flex items-center gap-2 px-5 py-3 bg-white border border-neutral-200 text-neutral-900 rounded-xl hover:bg-neutral-100 transition-all duration-300 font-semibold text-sm hover:scale-105 no-underline cursor-pointer"
             >
-            <Download size={18} /> CV
+               <Download size={18} /> CV
             </a>
 
             <div className="flex gap-2">
-            {/* 3. GitHub */}
-            <a 
-               href="https://github.com/topics/digital-clock?l=css&o=desc&s=stars"
-               target="_blank"
-               className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
-            >
-               <Github size={20} />
-            </a>
-            <a 
-               href="https://www.linkedin.com/in/ciellamher/"
-               target="_blank"
-               className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
-            >
-               <Linkedin size={20} />
-            </a>
-            <a 
-               href="mailto:work.gmdjimenez@gmail.com"
-               className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
-            >
-               <Mail size={20} />
-            </a>
+               <a
+                  href="https://github.com/topics/digital-clock?l=css&o=desc&s=stars"
+                  target="_blank"
+                  className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
+               >
+                  <Github size={20} />
+               </a>
+               <a
+                  href="https://www.linkedin.com/in/ciellamher/"
+                  target="_blank"
+                  className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
+               >
+                  <Linkedin size={20} />
+               </a>
+               <a
+                  href="mailto:work.gmdjimenez@gmail.com"
+                  className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
+               >
+                  <Mail size={20} />
+               </a>
             </div>
          </div>
       </div>
@@ -106,10 +184,10 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-6 mt-6 md:mt-12 space-y-10">
 
             {/* ROW 1: About, Tech, Experience */}
-         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5 }} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5 }} className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           
-          <div className="lg:col-span-2 space-y-6">
-            <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
+          <div className="lg:col-span-2 h-full flex flex-col gap-6">
+            <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 flex-1">
               <h3 className="text-xl font-bold flex items-center gap-2 mb-6 text-neutral-900">
                 <Briefcase size={22} className="text-neutral-900" /> About
               </h3>
@@ -142,7 +220,7 @@ export default function Home() {
                      <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Frontend</span>
                      <div className="flex flex-wrap gap-2">
                         {["JavaScript", "TypeScript", "React", "Next.js", "Vue.js", "HTML5", "Tailwind CSS", "SCSS", "Styled Components", "Vite", "Webpack", "ESLint", "Prettier"].map(t => (
-                        <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
+                        <span key={t} className="inline-flex h-11 items-center justify-center whitespace-nowrap px-4 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-xl hover:border-neutral-900 transition-colors cursor-default leading-none">
                            {t}
                         </span>
                         ))}
@@ -154,7 +232,7 @@ export default function Home() {
                      <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Backend</span>
                      <div className="flex flex-wrap gap-2">
                         {["Node.js", "Python", "Java", "C++", "Ruby", "PHP", "Express.js", "NestJS", "FastAPI", "Spring Boot", "Laravel", "PostgreSQL", "MySQL", "MongoDB"].map(t => (
-                        <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
+                        <span key={t} className="inline-flex h-11 items-center justify-center whitespace-nowrap px-4 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-xl hover:border-neutral-900 transition-colors cursor-default leading-none">
                            {t}
                         </span>
                         ))}
@@ -166,7 +244,7 @@ export default function Home() {
                      <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">VA & Productivity</span>
                      <div className="flex flex-wrap gap-2">
                         {["Notion (Campus Leader)", "Microsoft Excel", "Microsoft Word", "Google Workspace", "Project Management", "Data Entry", "Social Media Management"].map(t => (
-                        <span key={t} className="px-3 py-1.5 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-lg hover:border-neutral-900 transition-colors cursor-default">
+                        <span key={t} className="inline-flex h-11 items-center justify-center whitespace-nowrap px-4 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-xl hover:border-neutral-900 transition-colors cursor-default leading-none">
                            {t}
                         </span>
                         ))}
@@ -176,8 +254,8 @@ export default function Home() {
             </section>
           </div>
 
-          <div className="lg:col-span-1">
-             <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
+          <div className="lg:col-span-1 flex">
+             <section className="h-full w-full bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 flex flex-col">
                <div className="flex items-center gap-2 mb-10">
                   <Briefcase size={22} className="text-neutral-900" />
                   <h3 className="text-xl font-bold text-neutral-900">Experience</h3>
@@ -187,14 +265,16 @@ export default function Home() {
                   {[
                      // CURRENT ACTIVE ROLES (Black Dots)
                      { title: "Notion Campus Leader", org: "Notion - Holy Angel University", year: "2026", active: true },
-                     { title: "Events Director", org: "Cybersecurity Intelligence Alliance", year: "2025", active: true },
-                     { title: "Events Lead", org: "Google Developer Groups on Campus - Holy Angel University", year: "2024", active: true },
-                     { title: "Volunteer", org: "Each One Teach One, Inc.", year: "2023", active: true },
+                     { title: "Volunteer", org: "Each One Teach One", year: "2026", active: true },
+                     { title: "Events Director", org: "Cybersecurity Intelligence Alliance", year: "2026", active: false },
+                     { title: "Events Lead", org: "Google Developer Groups on Campus - Holy Angel University", year: "2026", active: false },
+                     { title: "Volunteer", org: "Notion - Holy Angel University", year: "2025", active: false },
                      
                      // PREVIOUS ROLES & EDUCATION (Grey Dots)
-                     { title: "BS Computer Science", org: "Holy Angel University", year: "2023", active: true, isEdu: true },
-                     { title: "Senior Executive Assistant to the Governor", org: "School of Computing - Student Council", year: "2024", active: false },
-                     { title: "Facilities and Logistics", org: "Holy Angel University - Student Council", year: "2023", active: false },
+                     { title: "BS Computer Science", org: "Holy Angel University", year: "2027", active: true, isEdu: true },
+                     { title: "Senior Executive Assistant to the Governor", org: "School of Computing - Student Council", year: "2025", active: false },
+                     { title: "Secretary", org: "SCALI Supreme Student Council", year: "2021", active: false },
+                     { title: "Facilities and Logistics", org: "Holy Angel University - Student Council", year: "2024", active: false },
                      { title: "Business Manager", org: "University of the Assumption – UASHS Supreme Student Council", year: "2022", active: false }
                   ].sort((a, b) => parseInt(b.year) - parseInt(a.year)) // Sort by Year Descending
                   .map((item, i) => (
@@ -237,8 +317,9 @@ export default function Home() {
                         <Heart size={22} className="text-neutral-900"/> Beyond Coding
                      </h3>
                      <p className="text-neutral-600 text-sm leading-relaxed mb-6">
-                        When not writing code, I organize large-scale campus events and serve as a Notion Campus Leader. 
-                        I am passionate about building community, digital productivity, and creating clean, organized systems.
+                        When not writing code, I organize large-scale campus events and serve as a Notion Campus Leader.
+                        I enjoy turning ideas into structured experiences, whether that means planning programs, refining workflows, or helping teams stay aligned.
+                        I am especially drawn to community-building, digital productivity, and creating clean systems that make work feel lighter and more intentional.
                      </p>
                   </div>
 
@@ -272,55 +353,30 @@ export default function Home() {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                     {[
-                        { 
-                           name: "Smart Attendance System", 
-                           type: "Facial Recognition Attendance", 
-                           link: "https://github.com/ciellamher/Smart-Attendance-System", 
-                           date: "Mar 2026"
-                        },
-                        { 
-                           name: "Driver Drowsiness Detector", 
-                           type: "Computer Vision Safety System", 
-                           link: "https://github.com/ciellamher/driver_drowsiness_detector", 
-                           date: "Feb 2026" 
-                        },
-                        { 
-                           name: "Lumo", 
-                           type: "AI Navigation App", 
-                           link: "https://github.com/darknecrocities/Lumo", 
-                           date: "Oct 2025",
-                           hasAward: true 
-                        },
-                        { 
-                           name: "peeView", 
-                           type: "AI Medical Interpretation", 
-                           link: "https://github.com/darknecrocities/peeview", 
-                           date: "Aug 2025" 
-                        }
-                     ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                        .map((project, i) => (
+                     {recentProjects.map((project, i) => (
                         <a 
                            key={i} 
                            href={project.link}
                            target={project.link === "#" ? "_self" : "_blank"}
                            rel="noopener noreferrer"
-                           className="group p-5 rounded-2xl bg-neutral-50 border border-neutral-200 hover:bg-white hover:border-neutral-300 transition-all no-underline block"
+                           className="group p-5 rounded-2xl bg-neutral-50 border border-neutral-200 hover:bg-white hover:border-neutral-300 transition-all no-underline block h-full"
                         >
-                           <div className="flex justify-between items-start mb-3">
-                              <div>
-                                 <div className="flex items-center gap-2">
-                                    <h4 className="font-bold text-neutral-900 group-hover:text-neutral-600">{project.name}</h4>
+                           <div className="flex h-full flex-col">
+                              <div className="flex justify-between items-start mb-3">
+                                 <div className="min-w-0 pr-3">
+                                    <div className="flex items-center gap-2">
+                                       <h4 className="font-bold text-neutral-900 group-hover:text-neutral-600">{project.name}</h4>
+                                    </div>
+                                    <p className="text-xs text-neutral-500">{getProjectPreview(project.desc)}</p>
                                  </div>
-                                 <p className="text-xs text-neutral-500">{project.type}</p>
+                                 <div className="p-2 bg-white rounded-full border border-neutral-200 group-hover:border-neutral-900 transition-colors shrink-0">
+                                    <ArrowUpRight size={16} className="text-neutral-400 group-hover:text-neutral-900"/>
+                                 </div>
                               </div>
-                              <div className="p-2 bg-white rounded-full border border-neutral-200 group-hover:border-neutral-900 transition-colors">
-                                 <ArrowUpRight size={16} className="text-neutral-400 group-hover:text-neutral-900"/>
-                              </div>
+                              <span className="mt-auto inline-flex w-fit text-[10px] font-bold text-neutral-400 bg-white px-2 py-1 rounded border border-neutral-200">
+                                 {project.date}
+                              </span>
                            </div>
-                           <span className="text-[10px] font-bold text-neutral-400 bg-white px-2 py-1 rounded border border-neutral-200">
-                              {project.link === "#" ? "Coming Soon" : project.link.replace('https://github.com/', '')}
-                           </span>
                         </a>
                      ))}
                   </div>
@@ -328,6 +384,113 @@ export default function Home() {
             </div>
       </motion.div>
 
+            {/* --- ROW 4: MEMBERSHIPS, SOCIALS, CONTACT --- */}
+         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: 0.12 }} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+            <div className="h-full bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
+               <h3 className="text-sm font-bold flex items-center gap-2 mb-6 text-neutral-900">
+                  <Users size={18} className="text-neutral-400"/> A member of
+               </h3>
+               <div className="space-y-3">
+                  {[
+                     { name: "Notion at HAU", link: "https://instagram.com/notion.hau" },
+                     { name: "GDG on Campus at HAU", link: "https://gdsc.community.dev/holy-angel-university/" },
+                     { name: "Cybersecurity Intelligence Alliance", link: "https://www.facebook.com/csia.hausoc/" }
+                  ].map((org, i) => (
+                     <a 
+                     key={i}
+                     href={org.link}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="p-4 bg-neutral-50 rounded-2xl shadow-sm flex justify-between items-center group cursor-pointer hover:bg-white transition-all no-underline"
+                     >
+                        <span className="text-[11px] font-bold text-neutral-700 group-hover:text-neutral-900 transition-colors">
+                           {org.name}
+                        </span>
+                        <ArrowUpRight size={14} className="text-neutral-300 group-hover:text-neutral-900 transition-colors"/>
+                     </a>
+                  ))}
+               </div>
+            </div>
+
+            <div className="h-full bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
+               <h3 className="text-sm font-bold flex items-center gap-2 mb-6 text-neutral-900">
+                  <Globe size={18} className="text-neutral-400"/> Social Links
+               </h3>
+               <div className="grid grid-cols-2 gap-3">
+                  {[
+                     { name: "LinkedIn", icon: <Linkedin size={18} />, link: "https://www.linkedin.com/in/ciellamher/" },
+                     { name: "GitHub", icon: <Github size={18} />, link: "https://github.com/ciellamher" },
+                     { name: "Instagram", icon: <Instagram size={18} />, link: "https://instagram.com/ciellamhar" },
+                     { name: "Facebook", icon: <MessageSquare size={18} />, link: "https://www.facebook.com/gramenez/" }
+                  ].map((social, i) => (
+                     <a 
+                     key={i}
+                     href={social.link}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex flex-col items-center justify-center p-4 bg-neutral-50 rounded-2xl shadow-sm group hover:bg-white transition-all no-underline"
+                     >
+                        <div className="text-neutral-400 group-hover:text-neutral-900 transition-colors mb-2">
+                           {social.icon}
+                        </div>
+                        <span className="text-[10px] font-bold text-neutral-500 group-hover:text-neutral-900 transition-colors uppercase tracking-wider">
+                           {social.name}
+                        </span>
+                     </a>
+                  ))}
+               </div>
+            </div>
+
+            <div className="h-full bg-white p-6 rounded-3xl border border-neutral-200 flex flex-col justify-between">
+               <div>
+                  <h3 className="text-sm font-bold flex items-center gap-2 mb-4 text-neutral-900">
+                     <Mic size={18}/> Speaking
+                  </h3>
+                  <p className="text-xs text-neutral-500 leading-relaxed">
+                     Available for speaking at events about software development, leadership, and Notion productivity.
+                  </p>
+               </div>
+               <div className="mt-6 flex items-center gap-2 text-xs font-bold text-neutral-900 cursor-pointer hover:underline">
+                  Get in touch <ChevronRight size={14}/>
+               </div>
+            </div>
+
+            <div className="h-full space-y-3 flex flex-col">
+               <div className="flex-1 bg-white p-4 rounded-2xl border border-neutral-200 flex flex-col gap-2">
+                  <div className="flex items-center gap-2 text-neutral-500 text-xs font-bold uppercase tracking-wider">
+                     <Mail size={14}/> <span>EMAIL</span>
+                  </div>
+                  <div className="flex flex-col gap-0">
+                    <a href="mailto:work.gmdjimenez@gmail.com" className="text-base font-semibold text-neutral-900">work.gmdjimenez@gmail.com</a>
+                  </div>
+               </div>
+
+               <div className="flex-1 bg-white p-4 rounded-2xl border border-neutral-200 flex flex-col gap-2">
+                  <div className="flex items-center gap-2 text-neutral-500 text-xs font-bold uppercase tracking-wider">
+                     <Mail size={14}/> <span>NOTION</span>
+                  </div>
+                  <div className="flex flex-col gap-0">
+                    <a href="mailto:notion.hau@gmail.com" className="text-base font-semibold text-neutral-900">notion.hau@gmail.com</a>
+                  </div>
+               </div>
+
+               <a href="https://calendar.app.google/EVMe3RzST39L25MH9" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white p-4 rounded-2xl border border-neutral-200 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-transform duration-300 hover:scale-[1.02] no-underline">
+                  <div className="flex items-center gap-2">
+                     <Calendar size={18} className="text-neutral-900"/>
+                     <span className="text-sm font-bold text-neutral-900">Let's Talk</span>
+                  </div>
+                  <ChevronRight size={16} className="text-neutral-400"/>
+               </a>
+
+               <a href="/Graciella_Jimenez_CV.pdf" download className="flex-1 bg-white p-4 rounded-2xl border border-neutral-200 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-transform duration-300 hover:scale-[1.02] no-underline">
+                  <div className="flex items-center gap-2">
+                     <Download size={18} className="text-neutral-900"/>
+                     <span className="text-sm font-bold text-neutral-900">Download CV</span>
+                  </div>
+                  <ChevronRight size={16} className="text-neutral-400"/>
+               </a>
+            </div>
+         </motion.div>
       {/* --- ROW 3: CERTIFICATIONS --- */}
       <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.08 }} className="grid grid-cols-1 gap-6">
          <div>
@@ -395,7 +558,7 @@ export default function Home() {
                      .map((column, columnIndex) => (
                         <div key={columnIndex} className="space-y-4">
                            {column.map((cert, certIndex) => (
-                              <div key={`${columnIndex}-${certIndex}`} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl border border-neutral-100 group transition-all hover:bg-neutral-100">
+                              <div key={`${columnIndex}-${certIndex}`} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl shadow-sm group transition-all hover:bg-neutral-100">
                                  <img
                                     src={cert.img}
                                     alt={cert.name}
@@ -411,114 +574,6 @@ export default function Home() {
                      ))}
                </div>
                </section>
-            </div>
-      </motion.div>
-
-            {/* --- ROW 4: MEMBERSHIPS, SOCIALS, CONTACT --- */}
-         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: 0.12 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
-               <h3 className="text-sm font-bold flex items-center gap-2 mb-6 text-neutral-900">
-                  <Users size={18} className="text-neutral-400"/> A member of
-               </h3>
-               <div className="space-y-3">
-                  {[
-                     { name: "Notion at HAU", link: "https://instagram.com/notion.hau" },
-                     { name: "GDG on Campus at HAU", link: "https://gdsc.community.dev/holy-angel-university/" },
-                     { name: "Cybersecurity Intelligence Alliance", link: "https://www.facebook.com/csia.hausoc/" }
-                  ].map((org, i) => (
-                     <a 
-                     key={i}
-                     href={org.link}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="p-4 bg-neutral-50 rounded-2xl border border-neutral-100 flex justify-between items-center group cursor-pointer hover:bg-white hover:border-neutral-900 transition-all no-underline"
-                     >
-                        <span className="text-[11px] font-bold text-neutral-700 group-hover:text-neutral-900 transition-colors">
-                           {org.name}
-                        </span>
-                        <ArrowUpRight size={14} className="text-neutral-300 group-hover:text-neutral-900 transition-colors"/>
-                     </a>
-                  ))}
-               </div>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
-               <h3 className="text-sm font-bold flex items-center gap-2 mb-6 text-neutral-900">
-                  <Globe size={18} className="text-neutral-400"/> Social Links
-               </h3>
-               <div className="grid grid-cols-2 gap-3">
-                  {[
-                     { name: "LinkedIn", icon: <Linkedin size={18} />, link: "https://www.linkedin.com/in/ciellamher/" },
-                     { name: "GitHub", icon: <Github size={18} />, link: "https://github.com/ciellamher" },
-                     { name: "Instagram", icon: <Instagram size={18} />, link: "https://instagram.com/ciellamhar" },
-                     { name: "Facebook", icon: <MessageSquare size={18} />, link: "https://www.facebook.com/gramenez/" }
-                  ].map((social, i) => (
-                     <a 
-                     key={i}
-                     href={social.link}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="flex flex-col items-center justify-center p-4 bg-neutral-50 rounded-2xl border border-neutral-100 group hover:border-neutral-900 transition-all no-underline"
-                     >
-                        <div className="text-neutral-400 group-hover:text-neutral-900 transition-colors mb-2">
-                           {social.icon}
-                        </div>
-                        <span className="text-[10px] font-bold text-neutral-500 group-hover:text-neutral-900 transition-colors uppercase tracking-wider">
-                           {social.name}
-                        </span>
-                     </a>
-                  ))}
-               </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-3xl border border-neutral-200 flex flex-col justify-between">
-               <div>
-                  <h3 className="text-sm font-bold flex items-center gap-2 mb-4 text-neutral-900">
-                     <Mic size={18}/> Speaking
-                  </h3>
-                  <p className="text-xs text-neutral-500 leading-relaxed">
-                     Available for speaking at events about software development, leadership, and Notion productivity.
-                  </p>
-               </div>
-               <div className="mt-6 flex items-center gap-2 text-xs font-bold text-neutral-900 cursor-pointer hover:underline">
-                  Get in touch <ChevronRight size={14}/>
-               </div>
-            </div>
-
-            <div className="space-y-3">
-               <div className="bg-white p-4 rounded-2xl border border-neutral-200 flex flex-col gap-2">
-                  <div className="flex items-center gap-2 text-neutral-500 text-xs font-bold uppercase tracking-wider">
-                     <Mail size={14}/> <span>EMAIL</span>
-                  </div>
-                  <div className="flex flex-col gap-0">
-                    <a href="mailto:work.gmdjimenez@gmail.com" className="text-base font-semibold text-neutral-900">work.gmdjimenez@gmail.com</a>
-                  </div>
-               </div>
-
-               <div className="bg-white p-4 rounded-2xl border border-neutral-200 flex flex-col gap-2">
-                  <div className="flex items-center gap-2 text-neutral-500 text-xs font-bold uppercase tracking-wider">
-                     <Mail size={14}/> <span>NOTION</span>
-                  </div>
-                  <div className="flex flex-col gap-0">
-                    <a href="mailto:notion.hau@gmail.com" className="text-base font-semibold text-neutral-900">notion.hau@gmail.com</a>
-                  </div>
-               </div>
-
-               <a href="https://calendar.app.google/EVMe3RzST39L25MH9" target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-2xl border border-neutral-200 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-transform duration-300 hover:scale-[1.02] no-underline">
-                  <div className="flex items-center gap-2">
-                     <Calendar size={18} className="text-neutral-900"/>
-                     <span className="text-sm font-bold text-neutral-900">Let's Talk</span>
-                  </div>
-                  <ChevronRight size={16} className="text-neutral-400"/>
-               </a>
-
-               <a href="/Graciella_Jimenez_CV.pdf" download className="bg-white p-4 rounded-2xl border border-neutral-200 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-transform duration-300 hover:scale-[1.02] no-underline">
-                  <div className="flex items-center gap-2">
-                     <Download size={18} className="text-neutral-900"/>
-                     <span className="text-sm font-bold text-neutral-900">Download CV</span>
-                  </div>
-                  <ChevronRight size={16} className="text-neutral-400"/>
-               </a>
             </div>
       </motion.div>
 
@@ -538,15 +593,9 @@ export default function Home() {
               </div>
            </div>
            
-           <div ref={galleryRef} className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x">
-              {[
-                "IMG_0780.JPG",
-                "IMG_4954.JPG",
-                "profile.jpeg",
-                "IMG_4955.JPG",
-                "IMG_5366.JPG"
-              ].map((file, i) => (
-                 <div key={i} className="snap-center shrink-0 w-[300px] h-[200px] bg-neutral-100 rounded-2xl overflow-hidden relative group border border-neutral-200">
+           <div ref={galleryRef} className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x scroll-smooth">
+              {[...galleryFiles, ...galleryFiles].map((file, i) => (
+                 <div key={`${file}-${i}`} className="snap-center shrink-0 w-[300px] h-[200px] bg-neutral-100 rounded-2xl overflow-hidden relative group border border-neutral-200">
                     <img
                        src={`/gallery/${file}`}
                        alt={`Gallery ${i + 1}`}
