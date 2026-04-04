@@ -22,7 +22,7 @@ const allCerts = [
     name: "AI Fundamentals with IBM SkillsBuild",
     org: "Cisco",
     date: "Mar 2026",
-    img: "https://media.licdn.com/dms/image/v2/D560BAQFYnR_Zrm87Dg/company-logo_100_100/B56ZnMyVr4HUAQ-/0/1760077372453/cisco_logo?e=1774483200&v=beta&t=U7eRwBv0pEVhLVDRAtMnnpRbNygJcs0XQ2Mi0UmOX8k",
+    img: "https://images.credly.com/images/26c21273-c0ab-485b-98a7-f1212dcb82b8/image.png",
     link: "https://www.credly.com/badges/87bc6e66-1050-41e2-9ed1-d99728e38d5f/linked_in_profile"
   },
   {

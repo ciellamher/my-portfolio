@@ -78,9 +78,9 @@ export default function Home() {
             if (elapsed >= 16) {
                gallery.scrollLeft += 0.22;
 
-               const halfWidth = gallery.scrollWidth / 2;
-               if (halfWidth > 0 && gallery.scrollLeft >= halfWidth) {
-                  gallery.scrollLeft -= halfWidth;
+               const maxScrollLeft = Math.max(0, gallery.scrollWidth - gallery.clientWidth);
+               if (maxScrollLeft > 0 && gallery.scrollLeft >= maxScrollLeft) {
+                  gallery.scrollLeft = 0;
                }
 
                lastTimestamp = timestamp;
@@ -384,6 +384,92 @@ export default function Home() {
             </div>
       </motion.div>
 
+      {/* --- ROW 3: CERTIFICATIONS --- */}
+      <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.08 }} className="grid grid-cols-1 gap-6">
+         <div>
+               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full">
+               <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
+                     <Award size={22} className="text-neutral-900"/> Certifications
+                  </h3>
+                  <Link href="/certifications" className="text-sm font-medium text-neutral-500 hover:text-neutral-900 flex items-center gap-1 transition-colors">
+                     View All <ChevronRight size={14}/>
+                  </Link>
+               </div>
+               
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {[
+                     {
+                        name: "Data Analytics Essentials",
+                        org: "Cisco",
+                        date: "Mar 2026",
+                        img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
+                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fe1d2bec0-ccfb-4818-ac1f-0d3d62d12d0f%2Flinked_in_profile&urlhash=CMl-&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BamwwyYFMR%2BS2jRO1NDPN2w%3D%3D"
+                     },
+                     {
+                        name: "AWS Academy Graduate - Cloud Foundations",
+                        org: "AWS Academy",
+                        date: "Mar 2026",
+                        img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+                        link: "https://www.credly.com/badges/fb9b3687-654c-4947-ba77-8721586bc54a/linked_in_profile"
+                     },
+                     {
+                        name: "AI Fundamentals with IBM SkillsBuild",
+                        org: "Cisco",
+                        date: "Mar 2026",
+                        img: "https://images.credly.com/images/26c21273-c0ab-485b-98a7-f1212dcb82b8/image.png",
+                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2F87bc6e66-1050-41e2-9ed1-d99728e38d5f%2Flinked_in_profile&urlhash=oW4o&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
+                     },
+                     {
+                        name: "Artificial Intelligence Fundamentals",
+                        org: "IBM",
+                        date: "Mar 2026",
+                        img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fdf867832-36b5-445b-a500-e1ace044337f%2Flinked_in_profile&urlhash=xpKd&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
+                     },
+                     {
+                        name: "Notion Advanced Badge",
+                        org: "Notion",
+                        date: "Oct 2025",
+                        img: "/badges/notion-advanced.png",
+                        link: "https://verify.skilljar.com/c/sui8pnm3wf5a"
+                     },
+                     {
+                        name: "Notion Essentials Badge",
+                        org: "Notion",
+                        date: "Oct 2025",
+                        img: "/badges/notion-essentials.png",
+                        link: "https://verify.skilljar.com/c/22uigpmzsa2g"
+                     }
+                  ]
+                     .reduce((columns, cert, index, certs) => {
+                        const midpoint = Math.ceil(certs.length / 2);
+                        const columnIndex = index < midpoint ? 0 : 1;
+                        columns[columnIndex].push(cert);
+                        return columns;
+                     }, [[], []] as Array<Array<{ name: string; org: string; date: string; img: string; link: string }>>)
+                     .map((column, columnIndex) => (
+                        <div key={columnIndex} className="space-y-4">
+                           {column.map((cert, certIndex) => (
+                              <div key={`${columnIndex}-${certIndex}`} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl border border-neutral-100 group transition-all hover:bg-neutral-100">
+                                 <img
+                                    src={cert.img}
+                                    alt={cert.name}
+                                    className="w-12 h-12 object-contain rounded-lg"
+                                 />
+                                 <div>
+                                    <h4 className="font-bold text-sm text-neutral-900">{cert.name}</h4>
+                                    <p className="text-xs text-neutral-500 mt-0.5">{cert.org} • {cert.date}</p>
+                                 </div>
+                              </div>
+                           ))}
+                        </div>
+                     ))}
+               </div>
+               </section>
+            </div>
+      </motion.div>
+
             {/* --- ROW 4: MEMBERSHIPS, SOCIALS, CONTACT --- */}
          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: 0.12 }} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
             <div className="h-full bg-white p-6 md:p-8 rounded-[2rem] border border-neutral-200 flex flex-col">
@@ -401,7 +487,7 @@ export default function Home() {
                      href={org.link}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="p-4 bg-neutral-50 rounded-2xl shadow-sm flex justify-between items-center group cursor-pointer hover:bg-white transition-all no-underline"
+                     className="p-4 bg-neutral-50 rounded-2xl border border-neutral-100 flex justify-between items-center group cursor-pointer hover:bg-white hover:border-neutral-900 transition-all no-underline"
                      >
                         <span className="text-[11px] font-bold text-neutral-700 group-hover:text-neutral-900 transition-colors">
                            {org.name}
@@ -428,7 +514,7 @@ export default function Home() {
                      href={social.link}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="flex flex-col items-center justify-center p-4 bg-neutral-50 rounded-2xl shadow-sm group hover:bg-white transition-all no-underline"
+                     className="flex flex-col items-center justify-center p-4 bg-neutral-50 rounded-2xl border border-neutral-100 group hover:bg-white hover:border-neutral-900 transition-all no-underline"
                      >
                         <div className="text-neutral-400 group-hover:text-neutral-900 transition-colors mb-2">
                            {social.icon}
@@ -491,91 +577,6 @@ export default function Home() {
                </a>
             </div>
          </motion.div>
-      {/* --- ROW 3: CERTIFICATIONS --- */}
-      <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.08 }} className="grid grid-cols-1 gap-6">
-         <div>
-               <section className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200 h-full">
-               <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-xl font-bold flex items-center gap-2 text-neutral-900">
-                     <Award size={22} className="text-neutral-900"/> Certifications
-                  </h3>
-                  <Link href="/certifications" className="text-sm font-medium text-neutral-500 hover:text-neutral-900 flex items-center gap-1 transition-colors">
-                     View All <ChevronRight size={14}/>
-                  </Link>
-               </div>
-               
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  {[
-                     {
-                        name: "Data Analytics Essentials",
-                        org: "Cisco",
-                        date: "Mar 2026",
-                        img: "https://www.netacad.com/p/ff9e491c-49be-4734-803e-a79e6e83dab1/badges/badge-images/52517717-589b-4c76-977d-27a53952379f.png",
-                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fe1d2bec0-ccfb-4818-ac1f-0d3d62d12d0f%2Flinked_in_profile&urlhash=CMl-&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BamwwyYFMR%2BS2jRO1NDPN2w%3D%3D"
-                     },
-                     {
-                        name: "AWS Academy Graduate - Cloud Foundations",
-                        org: "AWS Academy",
-                        date: "Mar 2026",
-                        img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-                        link: "https://www.credly.com/badges/fb9b3687-654c-4947-ba77-8721586bc54a/linked_in_profile"
-                     },
-                     {
-                        name: "AI Fundamentals with IBM SkillsBuild",
-                        org: "Cisco",
-                        date: "Mar 2026",
-                        img: "https://media.licdn.com/dms/image/v2/D560BAQFYnR_Zrm87Dg/company-logo_100_100/B56ZnMyVr4HUAQ-/0/1760077372453/cisco_logo?e=1774483200&v=beta&t=U7eRwBv0pEVhLVDRAtMnnpRbNygJcs0XQ2Mi0UmOX8k",
-                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2F87bc6e66-1050-41e2-9ed1-d99728e38d5f%2Flinked_in_profile&urlhash=oW4o&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
-                     },
-                     {
-                        name: "Artificial Intelligence Fundamentals",
-                        org: "IBM",
-                        date: "Mar 2026",
-                        img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-                        link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fdf867832-36b5-445b-a500-e1ace044337f%2Flinked_in_profile&urlhash=xpKd&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
-                     },
-                     {
-                        name: "Notion Advanced Badge",
-                        org: "Notion",
-                        date: "Oct 2025",
-                        img: "/badges/notion-advanced.png",
-                        link: "https://verify.skilljar.com/c/sui8pnm3wf5a"
-                     },
-                     {
-                        name: "Notion Essentials Badge",
-                        org: "Notion",
-                        date: "Oct 2025",
-                        img: "/badges/notion-essentials.png",
-                        link: "https://verify.skilljar.com/c/22uigpmzsa2g"
-                     }
-                  ]
-                     .reduce((columns, cert, index, certs) => {
-                        const midpoint = Math.ceil(certs.length / 2);
-                        const columnIndex = index < midpoint ? 0 : 1;
-                        columns[columnIndex].push(cert);
-                        return columns;
-                     }, [[], []] as Array<Array<{ name: string; org: string; date: string; img: string; link: string }>>)
-                     .map((column, columnIndex) => (
-                        <div key={columnIndex} className="space-y-4">
-                           {column.map((cert, certIndex) => (
-                              <div key={`${columnIndex}-${certIndex}`} className="flex items-center gap-4 bg-neutral-50 p-4 rounded-xl shadow-sm group transition-all hover:bg-neutral-100">
-                                 <img
-                                    src={cert.img}
-                                    alt={cert.name}
-                                    className="w-12 h-12 object-contain rounded-lg"
-                                 />
-                                 <div>
-                                    <h4 className="font-bold text-sm text-neutral-900">{cert.name}</h4>
-                                    <p className="text-xs text-neutral-500 mt-0.5">{cert.org} • {cert.date}</p>
-                                 </div>
-                              </div>
-                           ))}
-                        </div>
-                     ))}
-               </div>
-               </section>
-            </div>
-      </motion.div>
 
             {/* ROW 5: GALLERY */}
          <motion.section initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: 0.5, delay: 0.16 }} className="bg-white p-6 md:p-8 rounded-3xl border border-neutral-200">
@@ -594,7 +595,7 @@ export default function Home() {
            </div>
            
            <div ref={galleryRef} className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x scroll-smooth">
-              {[...galleryFiles, ...galleryFiles].map((file, i) => (
+              {galleryFiles.map((file, i) => (
                  <div key={`${file}-${i}`} className="snap-center shrink-0 w-[300px] h-[200px] bg-neutral-100 rounded-2xl overflow-hidden relative group border border-neutral-200">
                     <img
                        src={`/gallery/${file}`}
