@@ -151,7 +151,7 @@ export default function Home() {
 
             <div className="flex gap-2">
                <a
-                  href="https://github.com/topics/digital-clock?l=css&o=desc&s=stars"
+                  href="https://github.com/ciellamher"
                   target="_blank"
                   className="p-3 bg-white border border-neutral-200 rounded-xl hover:bg-neutral-100 text-neutral-900 transition-all hover:scale-105"
                >
