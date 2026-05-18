@@ -128,7 +128,7 @@ export default function Home() {
          </div>
          
          <p className="text-lg text-neutral-600 leading-relaxed max-w-md">
-            BS in Computer Science Student | Notion Campus Leader at Holy Angel University | Events Lead at GDGoC-HAU | Events Director at CSIA 
+            BS in Computer Science Student | Notion Campus Leader at Holy Angel University
          </p>
 
          <div className="flex flex-wrap gap-3 pt-4">
@@ -325,7 +325,7 @@ export default function Home() {
 
                   {/* Clickable Current Focus Box */}
                   <a 
-                     href="https://instagram.com/notion.hau" 
+                     href="https://hau-community.notion.site/?pvs=74" 
                      target="_blank" 
                      rel="noopener noreferrer"
                      className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 block hover:bg-neutral-100 transition-all group no-underline"
