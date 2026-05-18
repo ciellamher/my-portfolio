@@ -27,7 +27,7 @@ export default function ActionButtons() {
 
       {/* 3. GitHub Link */}
       <a 
-        href="https://github.com/topics/digital-clock?l=css&o=desc&s=stars" 
+        href="https://github.com/ciellamher" 
         target="_blank" 
         rel="noopener noreferrer"
         className="p-4 border border-gray-200 rounded-2xl hover:bg-gray-50 transition-all text-black cursor-pointer"
