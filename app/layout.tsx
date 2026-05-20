@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`)
+    : new URL('http://localhost:3000'),
   title: 'Graciella Jimenez | Portfolio',
   description: 'Notion Campus Leader & BS Computer Science Student',
   icons: {
