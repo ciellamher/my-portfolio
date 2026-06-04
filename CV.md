@@ -12,7 +12,7 @@ Pampanga, PH | +63 (929) 856-9503 | work.gmdjimenez@gmail.com
 
 ## TECHNICAL SKILLS
 * **Web & Mobile Dev:** HTML5/CSS3, JavaScript, TypeScript, Dart, React, Next.js, Vite, Flutter, Streamlit
-* **Systems, Databases & Design:** Python, SQL, Databases (PostgreSQL, MySQL, MongoDB), API Development, Git, Linux, Figma, Canva, UI/UX Design
+* **Systems, Databases & Design:** Python, Java, SQL, Databases (PostgreSQL, MySQL, MongoDB), API Development, Git, Linux, Figma, Canva, UI/UX Design
 * **Operations & Productivity:** Notion, Google Workspace, Project Management, Data Entry, Social Media Management
 
 ---

@@ -7,7 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 
 const allSkills = {
   Frontend: ["JavaScript", "TypeScript", "React", "Next.js", "Vite", "HTML5", "CSS3"],
-  "Backend & Systems": ["Python", "Streamlit", "API Development", "SQL", "Databases", "Linux", "Git", "Version Control"],
+  "Backend & Systems": ["Python", "Java", "Streamlit", "API Development", "SQL", "Databases", "Linux", "Git", "Version Control"],
   "Mobile Development": ["Dart", "Flutter"],
   "AI & Machine Learning": ["Artificial Intelligence", "Machine Learning", "Computer Vision", "Data Science"],
   "VA & Productivity": ["Notion", "Microsoft Excel", "Microsoft Word", "Google Workspace", "Project Management", "Data Entry", "Social Media Management"],

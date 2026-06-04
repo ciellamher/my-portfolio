@@ -231,7 +231,7 @@ export default function Home() {
                         <div>
                            <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.2em] block mb-4">Backend & Systems</span>
                            <div className="flex flex-wrap gap-2">
-                              {["Python", "Streamlit", "API Development", "SQL", "Databases", "Linux", "Git", "Version Control"].map(t => (
+                              {["Python", "Java", "Streamlit", "API Development", "SQL", "Databases", "Linux", "Git", "Version Control"].map(t => (
                                  <span key={t} className="inline-flex h-11 items-center justify-center whitespace-nowrap px-4 bg-white border border-neutral-200 text-sm font-medium text-neutral-900 rounded-xl hover:border-neutral-900 transition-colors cursor-default leading-none">
                                     {t}
                                  </span>
