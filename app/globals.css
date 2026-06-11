@@ -132,3 +132,169 @@
   /* older iOS support */
   padding-top: constant(safe-area-inset-top);
 }
+
+/* ============================================================
+   WELCOME / SPLASH SCREEN — in-theme with portfolio, auto-dismisses in 3s
+   ============================================================ */
+
+/* Page background — matches portfolio's bg-[#FDFDFD] */
+.ws-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #FDFDFD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Subtle dot-grid — adds depth without clashing */
+.ws-dotgrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.55;
+}
+
+/* Card — matches portfolio's white p-6/p-8 rounded-3xl border border-neutral-200 */
+.ws-card {
+  position: relative;
+  z-index: 10;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 2rem;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 420px;
+  width: calc(100% - 48px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+}
+
+/* Status pill — matches portfolio's "Contact" black pill */
+.ws-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #171717;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 24px;
+}
+.ws-pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.7;
+  animation: ws-pulse 2s ease-in-out infinite;
+}
+@keyframes ws-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.75); }
+}
+
+/* Photo */
+.ws-photo-wrap {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.ws-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Name — matches portfolio h1: font-extrabold tracking-tight text-neutral-900 */
+.ws-name {
+  font-size: clamp(26px, 6vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #171717;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+/* Location — matches portfolio's MapPin row: text-neutral-500 font-medium */
+.ws-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #737373;
+  margin-bottom: 20px;
+}
+
+/* Divider — matches neutral-200 borders */
+.ws-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e7eb;
+  margin-bottom: 20px;
+  transform-origin: left;
+}
+
+/* Tags — match tech stack chips: border border-neutral-200 rounded-xl text-neutral-900 */
+.ws-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.ws-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #404040;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Progress bar — neutral-900 fill matching portfolio's dark accents */
+.ws-progress-track {
+  width: 100%;
+  height: 2px;
+  background: #f5f5f5;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.ws-progress-bar {
+  height: 100%;
+  background: #171717;
+  border-radius: 99px;
+}
+
+/* Footer — matches portfolio footer style */
+.ws-footer {
+  position: absolute;
+  bottom: 24px;
+  font-size: 11px;
+  color: #d4d4d4;
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
