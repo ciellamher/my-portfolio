@@ -252,27 +252,15 @@
   transform-origin: left;
 }
 
-/* Tags — match tech stack chips: border border-neutral-200 rounded-xl text-neutral-900 */
-.ws-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-bottom: 28px;
-}
-.ws-tag {
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-  padding: 0 12px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #404040;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
+/* Description — matches portfolio hero paragraph: text-neutral-600 leading-relaxed */
+.ws-description {
+  font-size: 13px;
+  font-weight: 500;
+  color: #525252;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 0 28px;
+  max-width: 280px;
 }
 
 /* Progress bar — neutral-900 fill matching portfolio's dark accents */

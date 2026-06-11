@@ -3,12 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const TAGS = [
-  "Computer Science Student",
-  "Frontend Developer",
-  "Notion Campus Leader",
-  "AI Builder",
-];
+
 
 export default function WelcomeScreen() {
   const [visible, setVisible] = useState(false);
@@ -108,25 +103,15 @@ export default function WelcomeScreen() {
               className="ws-divider"
             />
 
-            {/* Tags — same chip style as Tech Stack section */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+            {/* Description — same style as portfolio hero paragraph */}
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.4 }}
-              className="ws-tags"
+              className="ws-description"
             >
-              {TAGS.map((tag, i) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + i * 0.07, duration: 0.3 }}
-                  className="ws-tag"
-                >
-                  {tag}
-                </motion.span>
-              ))}
-            </motion.div>
+              BS in Computer Science Student | Notion Campus Leader at Holy Angel University
+            </motion.p>
 
             {/* Progress bar */}
             <motion.div
