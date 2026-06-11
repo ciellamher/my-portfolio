@@ -168,12 +168,12 @@
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 2rem;
-  padding: 40px 48px;
+  padding: 40px 48px 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 420px;
+  max-width: 460px;
   width: calc(100% - 48px);
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
 }
@@ -254,13 +254,13 @@
 
 /* Description — matches portfolio hero paragraph: text-neutral-600 leading-relaxed */
 .ws-description {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
   color: #525252;
-  line-height: 1.6;
+  line-height: 1.7;
   text-align: center;
-  margin: 0 0 28px;
-  max-width: 280px;
+  margin: 0 0 24px;
+  max-width: 320px;
 }
 
 /* Progress bar — neutral-900 fill matching portfolio's dark accents */

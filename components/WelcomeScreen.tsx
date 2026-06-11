@@ -103,14 +103,15 @@ export default function WelcomeScreen() {
               className="ws-divider"
             />
 
-            {/* Description — same style as portfolio hero paragraph */}
+            {/* Description split into two clean lines */}
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.4 }}
               className="ws-description"
             >
-              BS in Computer Science Student | Notion Campus Leader at Holy Angel University
+              BS in Computer Science Student<br />
+              Notion Campus Leader at Holy Angel University
             </motion.p>
 
             {/* Progress bar */}
