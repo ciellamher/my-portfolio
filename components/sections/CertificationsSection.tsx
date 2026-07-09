@@ -67,6 +67,7 @@ export default function CertificationsSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {certifications
+          .slice(0, 6)
           .reduce((columns, cert, index, certs) => {
             const midpoint = Math.ceil(certs.length / 2);
             const columnIndex = index < midpoint ? 0 : 1;
