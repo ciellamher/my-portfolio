@@ -29,11 +29,18 @@ export default function NavBar() {
     const handleScroll = () => {
       if (isClickScrolling.current) return;
 
+      if (window.scrollY < 100) {
+        setActiveItem("Home");
+        return;
+      }
+
       let closestSection = "Home";
       let minDistance = Infinity;
       const targetY = window.innerHeight * 0.3; // 30% from the top
 
       for (const item of navItems) {
+        if (item.name === "Home") continue;
+
         const id = item.href.replace("/#", "");
         const element = document.getElementById(id);
         if (element) {
