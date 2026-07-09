@@ -24,35 +24,29 @@ export default function NavBar() {
   useEffect(() => {
     if (pathname !== "/") return;
 
-    setActiveItem("Home");
+    const handleScroll = () => {
+      let currentSection = "Home";
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            const navItem = navItems.find((item) => item.href === `/#${id}`);
-            if (navItem) {
-              setActiveItem(navItem.name);
-            }
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -60% 0px" }
-    );
-
-    const timeout = setTimeout(() => {
-      navItems.forEach((item) => {
+      for (const item of navItems) {
         const id = item.href.replace("/#", "");
-        const el = document.getElementById(id);
-        if (el) observer.observe(el);
-      });
-    }, 100);
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // 300px from top is a good threshold for "active"
+          if (rect.top <= 300) {
+            currentSection = item.name;
+          }
+        }
+      }
 
-    return () => {
-      clearTimeout(timeout);
-      observer.disconnect();
+      setActiveItem(currentSection);
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Trigger once to set initial state correctly
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   if (pathname !== "/") {
