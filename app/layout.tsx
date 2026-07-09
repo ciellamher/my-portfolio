@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Chatbot from "@/components/ui/Chatbot";
-import WelcomeScreen from "@/components/ui/WelcomeScreen";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import NavBar from "@/components/ui/NavBar";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
@@ -233,7 +232,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NavBar />
           <AnimatedBackground />
-          <WelcomeScreen />
           {children}
           <Chatbot />
         </ThemeProvider>

@@ -36,7 +36,7 @@ export default function ExperienceSection() {
               {/* Year Badge */}
               <span className={`text-[10px] font-semibold border px-3 py-1 rounded-full whitespace-nowrap transition-colors duration-700
                 ${item.active ? 'text-neutral-600 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700' : 'text-neutral-400 dark:text-neutral-500 bg-transparent border-neutral-200 dark:border-neutral-800'}`}>
-                {item.year}
+                {item.year.includes("Present") ? "Present" : item.year.includes("-") ? item.year.split("-")[1].trim() : item.year}
               </span>
             </div>
           </div>

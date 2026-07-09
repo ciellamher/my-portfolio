@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Mail, Download, Github, Linkedin } from "lucide-react";
+import { MapPin, Calendar, Mail, Download, Github, Linkedin, ChevronDown } from "lucide-react";
 import Lanyard from "@/components/ui/Lanyard";
 
 export default function HeroSection() {
   return (
-    <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[60vh] md:min-h-[90vh] grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+    <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="relative max-w-7xl mx-auto px-4 sm:px-6 min-h-[70vh] md:min-h-[90vh] grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
       <div className="hidden md:block md:col-span-1" />
       <div className="space-y-6 order-2 md:order-1 md:col-span-5 relative z-20">
         <div className="w-fit">
@@ -58,6 +58,25 @@ export default function HeroSection() {
           <Lanyard />
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors duration-300 animate-bounce cursor-pointer z-50"
+        onClick={() => {
+          const gridSection = document.querySelector('.max-w-6xl.mx-auto');
+          if (gridSection) {
+            gridSection.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: window.innerHeight - 100, behavior: 'smooth' });
+          }
+        }}
+      >
+        <span className="text-[10px] font-bold uppercase tracking-widest hidden md:block">Scroll</span>
+        <ChevronDown size={20} />
+      </motion.div>
     </motion.div>
   );
 }
