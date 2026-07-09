@@ -32,7 +32,14 @@ export default function NavBar() {
       <nav className="flex items-center gap-1 sm:gap-2 px-2 py-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] rounded-full overflow-x-auto no-scrollbar transition-colors duration-700">
         
         {/* Logo */}
-        <Link href="/#top" onClick={() => setActiveItem("Home")} className="flex items-center justify-center shrink-0 ml-2 mr-3 sm:ml-3 sm:mr-5">
+        <Link href="/#top" onClick={(e) => {
+          setActiveItem("Home");
+          const target = document.getElementById("top");
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }} className="flex items-center justify-center shrink-0 ml-2 mr-3 sm:ml-3 sm:mr-5">
           <img src="/logo-black.png" alt="GMJ Logo" className="w-7 h-7 sm:w-8 sm:h-8 object-contain dark:hidden block" />
           <img src="/logo-white.png" alt="GMJ Logo" className="w-7 h-7 sm:w-8 sm:h-8 object-contain hidden dark:block" />
         </Link>
@@ -43,7 +50,15 @@ export default function NavBar() {
             <a
               key={item.name}
               href={item.href}
-              onClick={() => setActiveItem(item.name)}
+              onClick={(e) => {
+                setActiveItem(item.name);
+                const targetId = item.href.replace('/#', '');
+                const target = document.getElementById(targetId);
+                if (target) {
+                  e.preventDefault();
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className={`relative px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[13px] sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap ${
                 isActive ? "text-neutral-900 dark:text-white" : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
               }`}

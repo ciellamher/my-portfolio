@@ -214,7 +214,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth scroll-pt-[100px]" suppressHydrationWarning>
+    <html lang="en" className="scroll-pt-[100px]" suppressHydrationWarning>
       <head>
         {/* Favicon / Site icon */}
         <link rel="icon" href="/logo-black.png" type="image/png" />

@@ -10,7 +10,7 @@ export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-[#FDFDFD] dark:bg-neutral-900 text-neutral-900 dark:text-white py-20 px-6 font-sans transition-colors duration-700">
       <div className="max-w-5xl mx-auto">
-        <button onClick={() => router.back()} className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors mb-8 text-sm font-medium cursor-pointer bg-transparent border-0 p-0">
+        <button onClick={() => router.push('/#projects')} className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors mb-8 text-sm font-medium cursor-pointer bg-transparent border-0 p-0">
           <ArrowLeft size={16} /> Back to Home
         </button>
         

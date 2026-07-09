@@ -142,7 +142,7 @@ export default function CertificationsPage() {
   return (
     <main className="min-h-screen bg-[#FDFDFD] dark:bg-neutral-900 text-neutral-900 dark:text-white py-20 px-6 font-sans transition-colors duration-700">
       <div className="max-w-6xl mx-auto">
-        <button onClick={() => router.back()} className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors mb-8 text-sm font-medium cursor-pointer bg-transparent border-0 p-0">
+        <button onClick={() => router.push('/#certifications')} className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors mb-8 text-sm font-medium cursor-pointer bg-transparent border-0 p-0">
           <ArrowLeft size={16} /> Back to Home
         </button>
         <h1 className="text-4xl font-bold mb-12 tracking-tight text-neutral-900 dark:text-white transition-colors duration-700">Licenses & Certifications</h1>
