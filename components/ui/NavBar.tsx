@@ -22,7 +22,37 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (pathname === "/") setActiveItem("Home");
+    if (pathname !== "/") return;
+
+    setActiveItem("Home");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const navItem = navItems.find((item) => item.href === `/#${id}`);
+            if (navItem) {
+              setActiveItem(navItem.name);
+            }
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -60% 0px" }
+    );
+
+    const timeout = setTimeout(() => {
+      navItems.forEach((item) => {
+        const id = item.href.replace("/#", "");
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+      observer.disconnect();
+    };
   }, [pathname]);
 
   if (pathname !== "/") {
