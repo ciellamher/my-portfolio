@@ -1,5 +1,5 @@
 **personal-portfolio-website**
-A custom, highly optimized Next.js platform for showcasing projects and technical identity.
+A custom, highly optimized Next.js platform showcasing technical projects, professional identity, and interactive UI design.
 
 ### 01 — INSTALL
 
@@ -12,16 +12,17 @@ Bash
 
 ### 02 — USE
 
-Launch the local development environment:
-
 > npm run dev
+
+The development server will be available at http://localhost:3000.
 
 ---
 
 ### 03 — WHAT'S INSIDE
 
-- `app/` — Next.js App Router definitions and pages.
-- `components/` — Modular React UI components and layout sections.
+- `app/` — Next.js App Router definitions, layouts, and pages.
+- `components/` — Modular React UI components including the navbar and project cards.
+- `public/` — Static assets, images, and fonts.
 
 ---
 
