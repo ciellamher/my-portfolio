@@ -5,6 +5,13 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 const allCerts = [
   // --- 2026 CERTIFICATIONS ---
   { 
+    name: "AI Fundamentals: Foundations for Understanding AI", 
+    org: "IBM", 
+    date: "Jul 2026", 
+    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+    link: "https://www.credly.com/badges/64db4ba7-a204-495b-8be1-a391f24f5030/linked_in_profile" 
+  },
+  { 
     name: "Advanced Prompt Engineering with ChatGPT", 
     org: "upGrad", 
     date: "Jul 2026", 

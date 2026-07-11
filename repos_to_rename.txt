@@ -1,0 +1,13 @@
+hau-org-finder
+hau-intel-badge-project
+hau-peeview-ai-urine-test-interpreter
+hau-student-database-management-system
+hau-chinese-horoscope-mobile-app
+hau-age-classification-model
+hau-interactive-digital-clock-ui
+hau-interactive-analog-clock-ui
+hau-shell-number-guessing-game
+hau-periodic-table
+hau-world-cup
+hau-salon-appointment
+hau-universe
