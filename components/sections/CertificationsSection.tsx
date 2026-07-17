@@ -4,6 +4,13 @@ import { Award, ChevronRight } from "lucide-react";
 export default function CertificationsSection() {
   const certifications = [
     {
+      name: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+      org: "Microsoft",
+      date: "Jul 2026",
+      img: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      link: "https://www.linkedin.com/learning/certificates/28104d0c6bbaf27bfd35d3850622d1e0324a154bda9d13e6955bcea985e75f84"
+    },
+    {
       name: "AI Fundamentals: Foundations for Understanding AI",
       org: "IBM",
       date: "Jul 2026",
@@ -37,27 +44,6 @@ export default function CertificationsSection() {
       date: "Mar 2026",
       img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
       link: "https://www.credly.com/badges/fb9b3687-654c-4947-ba77-8721586bc54a/linked_in_profile"
-    },
-    {
-      name: "AI Fundamentals with IBM SkillsBuild",
-      org: "Cisco",
-      date: "Mar 2026",
-      img: "https://images.credly.com/images/26c21273-c0ab-485b-98a7-f1212dcb82b8/image.png",
-      link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2F87bc6e66-1050-41e2-9ed1-d99728e38d5f%2Flinked_in_profile&urlhash=oW4o&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
-    },
-    {
-      name: "Artificial Intelligence Fundamentals",
-      org: "IBM",
-      date: "Mar 2026",
-      img: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-      link: "https://www.linkedin.com/redir/redirect/?url=https%3A%2F%2Fwww.credly.com%2Fbadges%2Fdf867832-36b5-445b-a500-e1ace044337f%2Flinked_in_profile&urlhash=xpKd&isSdui=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bdj1sakoURuCdMGnUBYjhzw%3D%3D"
-    },
-    {
-      name: "Notion Advanced Badge",
-      org: "Notion",
-      date: "Oct 2025",
-      img: "/badges/notion-advanced.png",
-      link: "https://verify.skilljar.com/c/sui8pnm3wf5a"
     }
   ];
 

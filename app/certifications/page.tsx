@@ -4,6 +4,13 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const allCerts = [
   // --- 2026 CERTIFICATIONS ---
+  {
+    name: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+    org: "Microsoft",
+    date: "Jul 2026",
+    img: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    link: "https://www.linkedin.com/learning/certificates/28104d0c6bbaf27bfd35d3850622d1e0324a154bda9d13e6955bcea985e75f84"
+  },
   { 
     name: "AI Fundamentals: Foundations for Understanding AI", 
     org: "IBM", 

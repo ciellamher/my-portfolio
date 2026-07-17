@@ -53,5 +53,6 @@ Pampanga, PH | +63 (929) 856-9503 | work.gmdjimenez@gmail.com
 **AWS Academy:** AWS Academy Graduate – Cloud Foundations
 **Cisco Networking Academy:** Data Analytics Essentials | Introduction to Networks | Cyber Threat Management | Endpoint Security | English for IT 1 | JavaScript Essentials 1 | Introduction to Cybersecurity
 **IBM:** Artificial Intelligence Fundamentals | AI Fundamentals with IBM SkillsBuild
+**Microsoft:** Career Essentials in Generative AI by Microsoft and LinkedIn
 **Notion:** Notion Advanced Badge | Notion Essentials Badge | Notion Workflows Badge
 **Others:** Responsive Web Design | Relational Database (freeCodeCamp) | Data Literacy (AIESEC Philippines) | AI Fundamentals | Data Literacy (DataCamp)
