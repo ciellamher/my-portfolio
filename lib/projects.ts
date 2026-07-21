@@ -40,7 +40,7 @@ const oldDescriptions: Record<string, string> = {
   "Shell Number Guessing Game": "A command-line game implemented with shell scripting fundamentals to practice flow control, input handling, and terminal UX.",
   "HAU Org Finder": "A data-driven web application built with React and Vite to help university students match with campus organizations based on personality, career goals, and interests, featuring a robust filtering algorithm and responsive UI.",
   "The Daily Dish": "A premium digital recipe box and weekly meal planner built with Vanilla JavaScript. Features a smart fridge mode to track ingredients, multi-proxy link importing, and an immersive, interactive cooking mode.",
-  "ig-curator": "A minimalist drag-and-drop dashboard to visually curate and schedule Instagram grids, reels, and stories.",
+  "IG Curator": "A minimalist drag-and-drop dashboard to visually curate and schedule Instagram grids, reels, and stories.",
 };
 
 const buildDescription = (project: ProjectSeed): string => {
@@ -65,7 +65,7 @@ const buildDescription = (project: ProjectSeed): string => {
 
 const projectSeeds: ProjectSeed[] = [
   {
-    name: "ig-curator",
+    name: "IG Curator",
     status: "Finished",
     date: "July 2026",
     tech: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Web Dev", "UI/UX", "Git", "Version Control"],
